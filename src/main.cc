@@ -3,6 +3,7 @@
 #include "algorithms/primes.h"
 #include "control/double.h"
 #include "control/single.h"
+#include "datastructures/linkedlist.h"
 #include "datastructures/vector.h"
 #include "strings/generator.h"
 #include "strings/palindrome.h"
@@ -140,6 +141,23 @@ void _vector() {
   std::cout << std::endl;
 }
 
+void _linkedlist() {
+  std::cout << "LinkedList" << std::endl;
+  std::cout << "----------" << std::endl;
+
+  LinkedList linkedlist(10);
+  linkedlist.Print();
+  linkedlist.AddNode(27);
+  linkedlist.AddNode(5);
+  linkedlist.Print();
+  std::cout << "SearchList(27): " << linkedlist.SearchList(27) << std::endl;
+  std::cout << "SearchList(100): " << linkedlist.SearchList(100) << std::endl;
+  linkedlist.ReverseList();
+  linkedlist.Print();
+
+  std::cout << std::endl;
+}
+
 int main(int argc, char **argv) {
   _single();
   _double();
@@ -147,5 +165,6 @@ int main(int argc, char **argv) {
   _reverse();
   _primes();
   _vector();
+  _linkedlist();
   return 0;
 }

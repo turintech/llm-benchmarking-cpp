@@ -10,6 +10,7 @@ public:
   long SumTriangle(int n);
   int CountPairs(int n);
   int CountDuplicates(int n);
+  int SumMatrix(int n);
 };
 
 #endif // CONTROL_DOUBLE_H_

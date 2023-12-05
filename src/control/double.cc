@@ -70,3 +70,21 @@ int DoubleForLoop::CountDuplicates(int n) {
   }
   return count;
 }
+
+int DoubleForLoop::SumMatrix(int n) {
+  // given a 2D array of size n x n, returns the sum of all values in the array
+  srand(0);
+  int array[n][n];
+  int sum = 0;
+  for (int i = 0; i < n; i += 1) {
+    for (int j = 0; j < n; j += 1) {
+      array[i][j] = rand() % 100;
+    }
+  }
+  for (int i = 0; i < n; i += 1) {
+    for (int j = 0; j < n; j += 1) {
+      sum += array[j][i];
+    }
+  }
+  return sum;
+}
