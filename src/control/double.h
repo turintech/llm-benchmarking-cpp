@@ -8,8 +8,8 @@ public:
   DoubleForLoop();
   long SumSquare(int n);
   long SumTriangle(int n);
-  int CountPairs(int n);
-  int CountDuplicates(int n);
+  int CountPairs(int n, int m);
+  int CountDuplicates(int n, int m);
   int SumMatrix(int n);
 };
 

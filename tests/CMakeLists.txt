@@ -8,5 +8,17 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(tests test.cc)
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain PUBLIC algorithms_lib control_lib datastructures_lib strings_lib)
+add_executable(tests 
+  test.cc 
+  test_single.cc
+  test_double.cc
+)
+target_link_libraries(tests 
+  PRIVATE 
+    Catch2::Catch2WithMain 
+  PUBLIC 
+    algorithms_lib 
+    control_lib 
+    datastructures_lib 
+    strings_lib
+)

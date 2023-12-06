@@ -35,7 +35,7 @@ SingleForLoop::MaxRandom(int n) {
 
 int
 SingleForLoop::SumModulus(int n, int m) {
-  // sums all values from 0 to n that are divisible by m
+  // sums all values from 0 to n (non-inclusive) that are divisible by m
   int array[n];
   int sum = 0;
   for (int i = 0; i < n; i += 1) {

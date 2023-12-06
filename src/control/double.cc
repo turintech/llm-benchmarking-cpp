@@ -9,7 +9,6 @@ DoubleForLoop::SumSquare(int n) {
   for (int i = 0; i < n; i += 1) {
     for (int j = 0; j < n; j += 1) {
       if (i == j) {
-        // std::cout << i << " " << j << " " << sum << std::endl;
         sum = sum + (long) (i * j);
       }
     }
@@ -21,9 +20,8 @@ long
 DoubleForLoop::SumTriangle(int n) {
   // returns sum of triangle numbers from T(1) to T(n)
   long sum = 0;
-  for (int i = 0; i < n; i += 1) {
+  for (int i = 0; i < n + 1; i += 1) {
     for (int j = 0; j < i; j += 1) {
-      // std::cout << i << " " << j << " " << sum << std::endl;
       sum = sum + (long) j;
     }
   }
@@ -31,15 +29,16 @@ DoubleForLoop::SumTriangle(int n) {
 }
 
 int
-DoubleForLoop::CountPairs(int n) {
+DoubleForLoop::CountPairs(int n, int m) {
   // returns number of pairs from a randomly generated array of n numbers.
+  // (each number is between 0 and m)
   // any number that appears twice is counted as a pair
   // any number that appears more than twice is NOT counted as a pair
   srand(0);
   int array[n];
   int count = 0;
   for (int i = 0; i < n; i += 1) {
-    array[i] = rand() % 1000;
+    array[i] = rand() % m;
   }
   for (int i = 0; i < n; i += 1) {
     int nDuplicates = 0;
@@ -56,20 +55,23 @@ DoubleForLoop::CountPairs(int n) {
 }
 
 int
-DoubleForLoop::CountDuplicates(int n) {
-  // given two arrays of size n, returns the number of instances where the
+DoubleForLoop::CountDuplicates(int n, int m) {
+  // given two random sets of size n, (each number is between 0 and m)
+  // returns the number of instances where the
   // values at the same index are equal
   srand(0);
   int array1[n];
   int array2[n];
   int count = 0;
   for (int i = 0; i < n; i += 1) {
-    array1[i] = rand() % 100;
-    array2[i] = rand() % 100;
+    array1[i] = rand() % m;
+    array2[i] = rand() % m;
   }
   for (int i = 0; i < n; i += 1) {
-    if (array1[i] == array2[i]) {
-      count += 1;
+    for (int j = 0; j < n; j += 1) {
+      if (i == j && array1[i] == array2[j]) {
+        count += 1;
+      }
     }
   }
   return count;

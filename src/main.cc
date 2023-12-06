@@ -6,13 +6,12 @@
 #include "datastructures/linkedlist.h"
 #include "datastructures/vector.h"
 #include "strings/generator.h"
-#include "strings/palindrome.h"
-#include "strings/reverse.h"
+#include "strings/strops.h"
 
 void
 _single() {
-  std::cout << "SingleForLoop" << std::endl;
-  std::cout << "-------------" << std::endl;
+  std::cout << "Single For Loop" << std::endl;
+  std::cout << "---------------" << std::endl;
 
   SingleForLoop single;
   int n = 1000000;
@@ -25,46 +24,34 @@ _single() {
 
 void
 _double() {
-  std::cout << "DoubleForLoop" << std::endl;
-  std::cout << "-------------" << std::endl;
+  std::cout << "Double For Loop" << std::endl;
+  std::cout << "---------------" << std::endl;
 
   DoubleForLoop double_;
   int n = 10000;
   std::cout << "SumSquare(" << n << "): " << double_.SumSquare(n) << std::endl;
   std::cout << "Triangle(" << n << "): " << double_.SumTriangle(n) << std::endl;
-  std::cout << "CountPairs(" << n << "): " << double_.CountPairs(n) << std::endl;
-  std::cout << "CountDuplicates(" << n << "): " << double_.CountDuplicates(n) << std::endl;
+  std::cout << "CountPairs(" << n << "): " << double_.CountPairs(n, 1000) << std::endl;
+  std::cout << "CountDuplicates(" << n << "): " << double_.CountDuplicates(n, 100) << std::endl;
 
   std::cout << std::endl;
 }
 
 void
-_palindrome() {
-  std::cout << "Palindrome" << std::endl;
-  std::cout << "----------" << std::endl;
+_strops() {
+  std::cout << "String Operations" << std::endl;
+  std::cout << "-----------------" << std::endl;
 
   Generator generator;
-  Palindrome palindrome;
+  StrOps strops;
   std::string randS = generator.RandomString(1000000);
-  std::string s = "racecar";
-  std::cout << "IsPalindrome(" << s << "): " << palindrome.IsPalindrome(s) << std::endl;
-  std::cout << "IsPalindrome(RandomString(1000000)): " << palindrome.IsPalindrome(randS) << std::endl;
-
-  std::cout << std::endl;
-}
-
-void
-_reverse() {
-  std::cout << "Reverse" << std::endl;
-  std::cout << "-------" << std::endl;
-
-  Generator generator;
-  Reverse reverse;
-  std::string randS = generator.RandomString(1000000);
-  std::string s = "hello world";
-  std::cout << "Reverse(" << s << "): " << reverse.ReverseString(s) << std::endl;
+  std::string s0 = "racecar";
+  std::cout << "IsPalindrome(" << s0 << "): " << strops.IsPalindrome(s0) << std::endl;
+  std::cout << "IsPalindrome(RandomString(1000000)): " << strops.IsPalindrome(randS) << std::endl;
+  std::string s1 = "hello world";
+  std::cout << "Reverse(" << s1 << "): " << strops.ReverseString(s1) << std::endl;
   // Printing this is too long
-  reverse.ReverseString(randS);
+  strops.ReverseString(randS);
 
   std::cout << std::endl;
 }
@@ -149,8 +136,7 @@ int
 main(int argc, char **argv) {
   _single();
   _double();
-  _palindrome();
-  _reverse();
+  _strops();
   _primes();
   _vector();
   _linkedlist();
