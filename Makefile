@@ -11,8 +11,16 @@ SOURCES = $(wildcard $(SRC)/control/*.cc $(SRC)/strings/*.cc $(SRC)/algorithms/*
 OBJECTS = $(SOURCES:$(SRC)/%.cc=$(BUILD)/%.o)
 EXECUTABLE = $(BUILD)/main
 
-# Default Target
-all: $(BUILD) $(EXECUTABLE)
+# Default (CMake)
+all: 
+	cmake -S . -B $(BUILD)
+
+# No CMake
+nocmake: 
+	$(BUILD) $(EXECUTABLE)
+
+compile:
+	cmake --build $(BUILD)
 
 # Create Build
 $(BUILD):

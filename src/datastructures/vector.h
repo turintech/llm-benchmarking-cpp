@@ -1,12 +1,14 @@
 #ifndef __DATASTRUCTURES_VECTOR_H__
 #define __DATASTRUCTURES_VECTOR_H__
 
+#include <iostream>
 #include <random>
 #include <vector>
 
 class Vector {
 public:
   Vector();
+  void PrintVector(std::vector<int> &v);
   std::vector<int> RandomVector(int n);
   std::vector<int> ModifyVector(std::vector<int> &v);
   std::vector<int> SearchVector(std::vector<int> &v, int n);

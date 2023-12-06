@@ -2,6 +2,14 @@
 
 Vector::Vector() {}
 
+void
+Vector::PrintVector(std::vector<int> &v) {
+  for (int i = 0; i < (int) v.size(); i += 1) {
+    std::cout << v[i] << " ";
+  }
+  std::cout << std::endl;
+}
+
 std::vector<int>
 Vector::RandomVector(int n) {
   std::vector<int> v;
