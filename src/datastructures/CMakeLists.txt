@@ -1,5 +1,5 @@
 add_library(datastructures_lib
     linkedlist.cc
-    dlist.cc
+    list.cc
     vector.cc
 )
