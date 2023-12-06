@@ -17,14 +17,14 @@ TEST_CASE("SingleForLoop::SumRange::Benchmark", "[benchmark][control][singlefor]
   BENCHMARK("SumRange(10000)") { return SingleForLoop::SumRange(10000); };
 }
 
-TEST_CASE("SingleForLoop::MaxRandom::Test", "[test][control][singlefor]") {
-  REQUIRE(SingleForLoop::MaxArray(GenVector::RandomVector(0, 1)) == 0);
-  REQUIRE(SingleForLoop::MaxArray(GenVector::RandomVector(100, 10)) <= 10);
+TEST_CASE("SingleForLoop::MaxVector::Test", "[test][control][singlefor]") {
+  REQUIRE(SingleForLoop::MaxVector(GenVector::RandomVector(0, 1)) == 0);
+  REQUIRE(SingleForLoop::MaxVector(GenVector::RandomVector(100, 10)) <= 10);
 }
 
-TEST_CASE("SingleForLoop::MaxRandom::Benchmark", "[benchmark][control][singlefor]") {
+TEST_CASE("SingleForLoop::MaxVector::Benchmark", "[benchmark][control][singlefor]") {
   BENCHMARK("MaxArray(RandomVector(10000, 100))") {
-    return SingleForLoop::MaxArray(GenVector::RandomVector(10000, 100));
+    return SingleForLoop::MaxVector(GenVector::RandomVector(10000, 100));
   };
 }
 

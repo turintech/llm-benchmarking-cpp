@@ -17,7 +17,7 @@ _single() {
   int n = 1000000;
   std::vector<int> arr = GenVector::RandomVector(n, 100);
   std::cout << "SumRange(" << n << "): " << SingleForLoop::SumRange(n) << std::endl;
-  std::cout << "MaxArray(Random" << n << "): " << SingleForLoop::MaxArray(arr) << std::endl;
+  std::cout << "MaxVector(Random" << n << "): " << SingleForLoop::MaxVector(arr) << std::endl;
   std::cout << "SumModulus(" << n << ", 2): " << SingleForLoop::SumModulus(n, 2) << std::endl;
 
   std::cout << std::endl;

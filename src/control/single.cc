@@ -26,7 +26,7 @@ SingleForLoop::SumRange(int n) {
  * @return the maximum value in the array
  */
 int
-SingleForLoop::MaxArray(std::vector<int> arr) {
+SingleForLoop::MaxVector(std::vector<int> arr) {
   // Returns the maximum value in an array of size n
   int max = 0;
   for (int i = 0; i < (int) arr.size(); i += 1) {
