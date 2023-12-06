@@ -62,11 +62,10 @@ _primes() {
   std::cout << "Primes" << std::endl;
   std::cout << "------" << std::endl;
 
-  Primes primes;
   int n = 10000;
-  std::cout << "SumPrimes(" << n << "): " << primes.SumPrimes(n) << std::endl;
+  std::cout << "SumPrimes(" << n << "): " << Primes::SumPrimes(n) << std::endl;
   n = 1248264;
-  std::vector<int> factors = primes.PrimeFactors(n);
+  std::vector<int> factors = Primes::PrimeFactors(n);
   std::cout << "PrimeFactors(" << n << "): ";
   for (int i = 0; i < (int) factors.size(); i += 1) {
     std::cout << factors[i] << " ";

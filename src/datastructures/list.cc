@@ -1,4 +1,4 @@
-#include "dlist.h"
+#include "list.h"
 
 std::list<int>
 OpsList::Shuffle(std::list<int> &l) {

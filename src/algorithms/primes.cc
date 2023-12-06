@@ -1,7 +1,5 @@
 #include "primes.h"
 
-Primes::Primes() {}
-
 bool
 Primes::IsPrime(int n) {
   // returns true if n is prime, false otherwise
