@@ -6,7 +6,7 @@
 namespace SingleForLoop {
 
 int SumRange(int n);
-int MaxVector(std::vector<int> arr);
+int MaxVector(std::vector<int> &arr);
 int SumModulus(int n, int m);
 
 };   // namespace SingleForLoop

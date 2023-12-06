@@ -18,13 +18,16 @@ TEST_CASE("SingleForLoop::SumRange::Benchmark", "[benchmark][control][singlefor]
 }
 
 TEST_CASE("SingleForLoop::MaxVector::Test", "[test][control][singlefor]") {
-  REQUIRE(SingleForLoop::MaxVector(GenVector::RandomVector(0, 1)) == 0);
-  REQUIRE(SingleForLoop::MaxVector(GenVector::RandomVector(100, 10)) <= 10);
+  std::vector<int> randVec0 = GenVector::RandomVector(0, 1);
+  std::vector<int> randVec1 = GenVector::RandomVector(100, 10);
+  REQUIRE(SingleForLoop::MaxVector(randVec0) == 0);
+  REQUIRE(SingleForLoop::MaxVector(randVec1) <= 10);
 }
 
 TEST_CASE("SingleForLoop::MaxVector::Benchmark", "[benchmark][control][singlefor]") {
   BENCHMARK("MaxArray(RandomVector(10000, 100))") {
-    return SingleForLoop::MaxVector(GenVector::RandomVector(10000, 100));
+    std::vector<int> randVec = GenVector::RandomVector(10000, 100);
+    return SingleForLoop::MaxVector(randVec);
   };
 }
 
