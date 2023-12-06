@@ -10,8 +10,8 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(tests 
   test.cc 
-  test_single.cc
-  test_double.cc
+  control/test_single.cc
+  control/test_double.cc
 )
 target_link_libraries(tests 
   PRIVATE 
