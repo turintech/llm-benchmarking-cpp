@@ -1,7 +1,5 @@
 #include "double.h"
 
-DoubleForLoop::DoubleForLoop() {}
-
 long
 DoubleForLoop::SumSquare(int n) {
   // sums all values squared from 0 to n

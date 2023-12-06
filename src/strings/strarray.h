@@ -4,10 +4,10 @@
 #include <string>
 #include <vector>
 
-class StrArray {
-public:
-  StrArray();
-  void SwapAdjacent(std::vector<std::string> &v);
+namespace StrArray {
+
+void SwapAdjacent(std::vector<std::string> &v);
+
 };
 
 #endif   // STRINGS_STRARRAY_H_

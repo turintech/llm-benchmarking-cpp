@@ -1,7 +1,5 @@
 #include "single.h"
 
-SingleForLoop::SingleForLoop() {}
-
 int
 SingleForLoop::SumRange(int n) {
   // sums all values from 0 to n

@@ -3,10 +3,10 @@
 
 #include <string>
 
-class GenString {
-public:
-  GenString();
-  std::string RandomString(int n);
+namespace GenString {
+
+std::string RandomString(int n);
+
 };
 
 #endif   // __GENERATOR_GENSTRING_H__

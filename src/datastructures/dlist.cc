@@ -1,9 +1,7 @@
 #include "dlist.h"
 
-List::List() {}
-
 std::list<int>
-List::Shuffle(std::list<int> &l) {
+OpsList::Shuffle(std::list<int> &l) {
   std::list<int> ret;
   srand(0);
 

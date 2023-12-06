@@ -4,10 +4,10 @@
 #include <list>
 #include <random>
 
-class List {
-public:
-  List();
-  std::list<int> Shuffle(std::list<int> &l);
-};
+namespace OpsList {
+
+std::list<int> Shuffle(std::list<int> &l);
+
+};   // namespace OpsList
 
 #endif   // __DATASTRUCTURES_VECTOR_H__

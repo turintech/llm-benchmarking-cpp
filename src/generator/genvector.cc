@@ -1,9 +1,7 @@
-#include "genarray.h"
-
-GenArray::GenArray() {}
+#include "genvector.h"
 
 std::vector<int>
-GenArray::RandomVector(int n, int m) {
+GenVector::RandomVector(int n, int m) {
   std::vector<int> ret = std::vector<int>(n);
 
   srand(0);
@@ -15,7 +13,7 @@ GenArray::RandomVector(int n, int m) {
 }
 
 std::vector<std::vector<int>>
-GenArray::RandomSquareMatrix(int n, int m) {
+GenVector::RandomSquareMatrix(int n, int m) {
   std::vector<std::vector<int>> ret = std::vector<std::vector<int>>(n);
 
   srand(0);

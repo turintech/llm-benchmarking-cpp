@@ -1,7 +1,5 @@
 #include "strops.h"
 
-StrOps::StrOps() {}
-
 std::string
 StrOps::ReverseString(std::string &s) {
   std::string ret;

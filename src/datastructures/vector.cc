@@ -1,9 +1,7 @@
 #include "vector.h"
 
-Vector::Vector() {}
-
 void
-Vector::PrintVector(std::vector<int> &v) {
+OpsVector::PrintVector(std::vector<int> &v) {
   for (int i = 0; i < (int) v.size(); i += 1) {
     std::cout << v[i] << " ";
   }
@@ -11,18 +9,7 @@ Vector::PrintVector(std::vector<int> &v) {
 }
 
 std::vector<int>
-Vector::RandomVector(int n) {
-  std::vector<int> v;
-  srand(0);
-
-  for (int i = 0; i < n; i += 1) {
-    v.push_back(rand() % 100);
-  }
-  return v;
-}
-
-std::vector<int>
-Vector::ModifyVector(std::vector<int> &v) {
+OpsVector::ModifyVector(std::vector<int> &v) {
   for (int i = 0; i < (int) v.size(); i += 1) {
     v.at(i) += 1;
   }
@@ -30,7 +17,7 @@ Vector::ModifyVector(std::vector<int> &v) {
 }
 
 std::vector<int>
-Vector::SearchVector(std::vector<int> &v, int n) {
+OpsVector::SearchVector(std::vector<int> &v, int n) {
   std::vector<int> ret;
 
   for (int i = 0; i < (int) v.size(); i += 1) {
@@ -42,7 +29,7 @@ Vector::SearchVector(std::vector<int> &v, int n) {
 }
 
 std::vector<int>
-Vector::SortVector(std::vector<int> &v) {
+OpsVector::SortVector(std::vector<int> &v) {
   std::vector<int> ret = v;
 
   for (int i = 0; i < (int) ret.size(); i += 1) {
@@ -58,7 +45,7 @@ Vector::SortVector(std::vector<int> &v) {
 }
 
 std::vector<int>
-Vector::ReverseVector(std::vector<int> &v) {
+OpsVector::ReverseVector(std::vector<int> &v) {
   std::vector<int> ret;
 
   for (int i = (int) v.size() - 1; i >= 0; i -= 1) {
@@ -68,7 +55,7 @@ Vector::ReverseVector(std::vector<int> &v) {
 }
 
 std::vector<int>
-Vector::RotateVector(std::vector<int> &v, int n) {
+OpsVector::RotateVector(std::vector<int> &v, int n) {
   std::vector<int> ret;
 
   for (int i = n; i < (int) v.size(); i += 1) {
@@ -81,7 +68,7 @@ Vector::RotateVector(std::vector<int> &v, int n) {
 }
 
 std::vector<int>
-Vector::MergeVectors(std::vector<int> &v1, std::vector<int> &v2) {
+OpsVector::MergeVectors(std::vector<int> &v1, std::vector<int> &v2) {
   std::vector<int> ret;
 
   for (int i = 0; i < (int) v1.size(); i += 1) {

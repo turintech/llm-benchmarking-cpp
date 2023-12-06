@@ -3,12 +3,12 @@
 
 #include <vector>
 
-class SingleForLoop {
-public:
-  SingleForLoop();
-  int SumRange(int n);
-  int MaxArray(std::vector<int> arr);
-  int SumModulus(int n, int m);
-};
+namespace SingleForLoop {
+
+int SumRange(int n);
+int MaxArray(std::vector<int> arr);
+int SumModulus(int n, int m);
+
+};   // namespace SingleForLoop
 
 #endif   // CONTROL_SINGLE_H_

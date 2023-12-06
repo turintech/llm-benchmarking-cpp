@@ -3,11 +3,11 @@
 
 #include <string>
 
-class StrOps {
-public:
-  StrOps();
-  bool IsPalindrome(const std::string &s);
-  std::string ReverseString(std::string &s);
-};
+namespace StrOps {
+
+bool IsPalindrome(const std::string &s);
+std::string ReverseString(std::string &s);
+
+};   // namespace StrOps
 
 #endif   // STRINGS_STROPS_H_

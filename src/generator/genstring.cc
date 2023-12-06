@@ -1,7 +1,5 @@
 #include "genstring.h"
 
-GenString::GenString() {}
-
 std::string
 GenString::RandomString(int n) {
   std::string ret;

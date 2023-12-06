@@ -5,8 +5,8 @@
 #include "control/single.h"
 #include "datastructures/linkedlist.h"
 #include "datastructures/vector.h"
-#include "generator/genarray.h"
 #include "generator/genstring.h"
+#include "generator/genvector.h"
 #include "strings/strops.h"
 
 void
@@ -14,13 +14,11 @@ _single() {
   std::cout << "Single For Loop" << std::endl;
   std::cout << "---------------" << std::endl;
 
-  SingleForLoop single;
-  GenArray generator;
   int n = 1000000;
-  std::vector<int> arr = generator.RandomVector(n, 100);
-  std::cout << "SumRange(" << n << "): " << single.SumRange(n) << std::endl;
-  std::cout << "MaxArray(Random" << n << "): " << single.MaxArray(arr) << std::endl;
-  std::cout << "SumModulus(" << n << ", 2): " << single.SumModulus(n, 2) << std::endl;
+  std::vector<int> arr = GenVector::RandomVector(n, 100);
+  std::cout << "SumRange(" << n << "): " << SingleForLoop::SumRange(n) << std::endl;
+  std::cout << "MaxArray(Random" << n << "): " << SingleForLoop::MaxArray(arr) << std::endl;
+  std::cout << "SumModulus(" << n << ", 2): " << SingleForLoop::SumModulus(n, 2) << std::endl;
 
   std::cout << std::endl;
 }
@@ -30,16 +28,14 @@ _double() {
   std::cout << "Double For Loop" << std::endl;
   std::cout << "---------------" << std::endl;
 
-  DoubleForLoop double_;
-  GenArray generator;
   int n = 10000;
-  std::vector<int> arr0 = generator.RandomVector(n, 1000);
-  std::vector<int> arr1 = generator.RandomVector(n, 100);
-  std::vector<int> arr2 = generator.RandomVector(n, 100);
-  std::cout << "SumSquare(" << n << "): " << double_.SumSquare(n) << std::endl;
-  std::cout << "Triangle(" << n << "): " << double_.SumTriangle(n) << std::endl;
-  std::cout << "CountPairs(" << n << "): " << double_.CountPairs(arr0) << std::endl;
-  std::cout << "CountDuplicates(" << n << "): " << double_.CountDuplicates(arr1, arr2) << std::endl;
+  std::vector<int> arr0 = GenVector::RandomVector(n, 1000);
+  std::vector<int> arr1 = GenVector::RandomVector(n, 100);
+  std::vector<int> arr2 = GenVector::RandomVector(n, 100);
+  std::cout << "SumSquare(" << n << "): " << DoubleForLoop::SumSquare(n) << std::endl;
+  std::cout << "Triangle(" << n << "): " << DoubleForLoop::SumTriangle(n) << std::endl;
+  std::cout << "CountPairs(" << n << "): " << DoubleForLoop::CountPairs(arr0) << std::endl;
+  std::cout << "CountDuplicates(" << n << "): " << DoubleForLoop::CountDuplicates(arr1, arr2) << std::endl;
 
   std::cout << std::endl;
 }
@@ -49,16 +45,14 @@ _strops() {
   std::cout << "String Operations" << std::endl;
   std::cout << "-----------------" << std::endl;
 
-  GenString generator;
-  StrOps strops;
-  std::string randS = generator.RandomString(1000000);
+  std::string randS = GenString::RandomString(1000000);
   std::string s0 = "racecar";
-  std::cout << "IsPalindrome(" << s0 << "): " << strops.IsPalindrome(s0) << std::endl;
-  std::cout << "IsPalindrome(RandomString(1000000)): " << strops.IsPalindrome(randS) << std::endl;
+  std::cout << "IsPalindrome(" << s0 << "): " << StrOps::IsPalindrome(s0) << std::endl;
+  std::cout << "IsPalindrome(RandomString(1000000)): " << StrOps::IsPalindrome(randS) << std::endl;
   std::string s1 = "hello world";
-  std::cout << "Reverse(" << s1 << "): " << strops.ReverseString(s1) << std::endl;
+  std::cout << "Reverse(" << s1 << "): " << StrOps::ReverseString(s1) << std::endl;
   // Printing this is too long
-  strops.ReverseString(randS);
+  StrOps::ReverseString(randS);
 
   std::cout << std::endl;
 }
@@ -87,36 +81,35 @@ _vector() {
   std::cout << "Vector" << std::endl;
   std::cout << "------" << std::endl;
 
-  Vector vector;
-  std::vector<int> v1 = vector.RandomVector(20);
-  std::vector<int> v2 = vector.RandomVector(20);
-  std::vector<int> vModified = vector.ModifyVector(v1);
-  std::vector<int> vSorted = vector.SortVector(v1);
-  std::vector<int> vSearched = vector.SearchVector(v1, 27);
-  std::vector<int> vReversed = vector.ReverseVector(v1);
-  std::vector<int> vRotated = vector.RotateVector(v1, 5);
-  std::vector<int> vMerged = vector.MergeVectors(v1, v2);
+  std::vector<int> v1 = GenVector::RandomVector(20, 10);
+  std::vector<int> v2 = GenVector::RandomVector(20, 10);
+  std::vector<int> vModified = OpsVector::ModifyVector(v1);
+  std::vector<int> vSorted = OpsVector::SortVector(v1);
+  std::vector<int> vSearched = OpsVector::SearchVector(v1, 27);
+  std::vector<int> vReversed = OpsVector::ReverseVector(v1);
+  std::vector<int> vRotated = OpsVector::RotateVector(v1, 5);
+  std::vector<int> vMerged = OpsVector::MergeVectors(v1, v2);
 
   std::cout << "RandomVector(20): ";
-  vector.PrintVector(v1);
+  OpsVector::PrintVector(v1);
 
   std::cout << "ModifyVector(RandomVector(20)): ";
-  vector.PrintVector(vModified);
+  OpsVector::PrintVector(vModified);
 
   std::cout << "SortVector(RandomVector(20)): ";
-  vector.PrintVector(vSorted);
+  OpsVector::PrintVector(vSorted);
 
   std::cout << "SearchVector(RandomVector(20), 27): ";
-  vector.PrintVector(vSearched);
+  OpsVector::PrintVector(vSearched);
 
   std::cout << "ReverseVector(RandomVector(20)): ";
-  vector.PrintVector(vReversed);
+  OpsVector::PrintVector(vReversed);
 
   std::cout << "RotateVector(RandomVector(20), 5): ";
-  vector.PrintVector(vRotated);
+  OpsVector::PrintVector(vRotated);
 
   std::cout << "MergeVectors(RandomVector(20), RandomVector(20)): ";
-  vector.PrintVector(vMerged);
+  OpsVector::PrintVector(vMerged);
 
   std::cout << std::endl << std::endl;
 }
