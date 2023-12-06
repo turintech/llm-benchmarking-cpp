@@ -12,6 +12,8 @@ add_executable(tests
   test.cc 
   control/test_single.cc
   control/test_double.cc
+  datastructures/test_vector.cc
+  datastructures/test_linkedlist.cc
 )
 target_link_libraries(tests 
   PRIVATE 

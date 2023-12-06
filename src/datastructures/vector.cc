@@ -22,6 +22,13 @@ OpsVector::ModifyVector(std::vector<int> &v) {
   return v;
 }
 
+/**
+ * @brief Searches the vector for all instances of n.
+ *
+ * @param v Vector to search.
+ * @param n Number to search for.
+ * @return A vector of indices where n was found.
+ */
 std::vector<int>
 OpsVector::SearchVector(std::vector<int> &v, int n) {
   std::vector<int> ret;

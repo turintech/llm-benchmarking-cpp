@@ -2,23 +2,44 @@
 
 /** @brief Constructor for LinkedList class
  *
- *  @param n Number of nodes in the linked list
+ * @param n Data to add to the head node
  */
 LinkedList::LinkedList(int n) {
-  srand(0);
-
   head = new Node;
-  head->data = rand() % 100;
+  head->data = n;
   head->next = nullptr;
+}
 
+/** @brief Destructor for LinkedList class
+ *
+ */
+LinkedList::~LinkedList() {
   Node *current = head;
-  for (int i = 1; i < n; ++i) {
-    Node *new_node = new Node;
-    new_node->data = rand() % 100;
-    new_node->next = nullptr;
-    current->next = new_node;
-    current = new_node;
+  Node *next = nullptr;
+
+  while (current != nullptr) {
+    next = current->next;
+    delete current;
+    current = next;
   }
+}
+
+/** @brief Generates a random linked list of length n
+ *
+ *  @param n Length of the linked list to generate
+ *  @param m Upper bound (non-inclusive) of the values in the linked list
+ *  @return A random linked list of length n
+ */
+LinkedList *
+LinkedList::RandomLinkedList(int n, int m) {
+  LinkedList *ret = new LinkedList(rand() % m);
+
+  srand(0);
+  for (int i = 0; i < n - 1; i += 1) {
+    ret->AddNode(rand() % m);
+  }
+
+  return ret;
 }
 
 /** @brief Prints the linked list
@@ -85,4 +106,18 @@ LinkedList::ReverseList() {
   }
 
   head = prev;
+}
+
+/** @brief Returns the data at the nth node
+ *
+ *  @param n Index of the node to return
+ *  @return Data at the nth node
+ */
+int
+LinkedList::At(int n) {
+  Node *current = head;
+  for (int i = 0; i < n; i += 1) {
+    current = current->next;
+  }
+  return current->data;
 }

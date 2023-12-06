@@ -12,10 +12,13 @@ struct Node {
 class LinkedList {
 public:
   LinkedList(int n);
+  ~LinkedList();
+  static LinkedList *RandomLinkedList(int n, int m);
   void Print();
   void AddNode(int n);
   bool SearchList(int n);
   void ReverseList();
+  int At(int n);
 
 private:
   Node *head;
