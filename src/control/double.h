@@ -13,4 +13,4 @@ public:
   int SumMatrix(int n);
 };
 
-#endif // CONTROL_DOUBLE_H_
+#endif   // CONTROL_DOUBLE_H_

@@ -2,7 +2,8 @@
 
 Primes::Primes() {}
 
-bool Primes::IsPrime(int n) {
+bool
+Primes::IsPrime(int n) {
   // returns true if n is prime, false otherwise
   if (n <= 1) {
     return false;
@@ -15,7 +16,8 @@ bool Primes::IsPrime(int n) {
   return true;
 }
 
-int Primes::SumPrimes(int n) {
+int
+Primes::SumPrimes(int n) {
   // sums all prime numbers from 0 to n
   int sum = 0;
 
@@ -27,7 +29,8 @@ int Primes::SumPrimes(int n) {
   return sum;
 }
 
-std::vector<int> Primes::PrimeFactors(int n) {
+std::vector<int>
+Primes::PrimeFactors(int n) {
   // returns a vector of all prime factors of n
   std::vector<int> factors;
 

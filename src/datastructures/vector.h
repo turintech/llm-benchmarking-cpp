@@ -16,4 +16,4 @@ public:
   std::vector<int> MergeVectors(std::vector<int> &v1, std::vector<int> &v2);
 };
 
-#endif // __DATASTRUCTURES_VECTOR_H__
+#endif   // __DATASTRUCTURES_VECTOR_H__

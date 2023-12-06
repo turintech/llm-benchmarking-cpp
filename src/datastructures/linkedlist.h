@@ -21,4 +21,4 @@ private:
   Node *head;
 };
 
-#endif // __DATASTRUCTURES_LINKEDLIST_H__
+#endif   // __DATASTRUCTURES_LINKEDLIST_H__

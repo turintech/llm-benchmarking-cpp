@@ -11,4 +11,4 @@ public:
   int SumModulus(int n, int m);
 };
 
-#endif // CONTROL_SINGLE_H_
+#endif   // CONTROL_SINGLE_H_

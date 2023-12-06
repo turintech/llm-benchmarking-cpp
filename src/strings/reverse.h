@@ -9,4 +9,4 @@ public:
   std::string ReverseString(std::string &s);
 };
 
-#endif // __STRINGS_REVERSE_H__
+#endif   // __STRINGS_REVERSE_H__

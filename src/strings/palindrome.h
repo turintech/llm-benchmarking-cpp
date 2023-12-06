@@ -9,4 +9,4 @@ public:
   bool IsPalindrome(const std::string &s);
 };
 
-#endif // __STRINGS_PALINDROME_H__
+#endif   // __STRINGS_PALINDROME_H__

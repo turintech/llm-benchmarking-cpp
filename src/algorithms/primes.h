@@ -13,4 +13,4 @@ private:
   bool IsPrime(int n);
 };
 
-#endif // ALGORITHMS_PRIMES_H_
+#endif   // ALGORITHMS_PRIMES_H_

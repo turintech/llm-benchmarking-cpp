@@ -9,4 +9,4 @@ public:
   std::string RandomString(int n);
 };
 
-#endif // __STRINGS_GENERATOR_H__
+#endif   // __STRINGS_GENERATOR_H__

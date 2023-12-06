@@ -2,7 +2,8 @@
 
 SingleForLoop::SingleForLoop() {}
 
-int SingleForLoop::SumRange(int n) {
+int
+SingleForLoop::SumRange(int n) {
   // sums all values from 0 to n
   int array[n];
   int sum = 0;
@@ -15,8 +16,9 @@ int SingleForLoop::SumRange(int n) {
   return sum;
 }
 
-int SingleForLoop::MaxRandom(int n) {
-  // returns the max value from a random array of size n
+int
+SingleForLoop::MaxRandom(int n) {
+  // samples n random numbers and returns the max
   srand(0);
   int array[n];
   int max = 0;
@@ -31,7 +33,8 @@ int SingleForLoop::MaxRandom(int n) {
   return max;
 }
 
-int SingleForLoop::SumModulus(int n, int m) {
+int
+SingleForLoop::SumModulus(int n, int m) {
   // sums all values from 0 to n that are divisible by m
   int array[n];
   int sum = 0;

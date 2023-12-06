@@ -17,7 +17,8 @@ LinkedList::LinkedList(int n) {
   }
 }
 
-void LinkedList::Print() {
+void
+LinkedList::Print() {
   Node *current = head;
   while (current != nullptr) {
     std::cout << current->data << " ";
@@ -26,7 +27,8 @@ void LinkedList::Print() {
   std::cout << std::endl;
 }
 
-void LinkedList::AddNode(int n) {
+void
+LinkedList::AddNode(int n) {
   Node *current = head;
   while (current->next != nullptr) {
     current = current->next;
@@ -38,7 +40,8 @@ void LinkedList::AddNode(int n) {
   current->next = new_node;
 }
 
-bool LinkedList::SearchList(int n) {
+bool
+LinkedList::SearchList(int n) {
   Node *current = head;
   while (current != nullptr) {
     if (current->data == n) {
@@ -49,7 +52,8 @@ bool LinkedList::SearchList(int n) {
   return false;
 }
 
-void LinkedList::ReverseList() {
+void
+LinkedList::ReverseList() {
   Node *current = head;
   Node *prev = nullptr;
   Node *next = nullptr;
