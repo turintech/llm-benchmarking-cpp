@@ -1,5 +1,8 @@
 #include "list.h"
 
+/** @brief
+ *
+ */
 std::list<int>
 OpsList::Shuffle(std::list<int> &l) {
   std::list<int> ret;

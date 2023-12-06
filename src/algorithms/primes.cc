@@ -1,8 +1,12 @@
 #include "primes.h"
 
+/** @brief Checks if a number is prime
+ *
+ *  @param n Number to check
+ *  @return True if n is prime, false otherwise
+ */
 bool
 Primes::IsPrime(int n) {
-  // returns true if n is prime, false otherwise
   if (n <= 1) {
     return false;
   }
@@ -14,9 +18,13 @@ Primes::IsPrime(int n) {
   return true;
 }
 
+/** @brief Sums all prime numbers from 0 to n
+ *
+ *  @param n Upper bound (non-inclusive) of the sum
+ *  @return The sum of all prime numbers from 0 to n
+ */
 int
 Primes::SumPrimes(int n) {
-  // sums all prime numbers from 0 to n
   int sum = 0;
 
   for (int i = 0; i < n; i += 1) {
@@ -27,9 +35,13 @@ Primes::SumPrimes(int n) {
   return sum;
 }
 
+/** @brief Finds all prime factors of a number
+ *
+ *  @param n Number to find prime factors of
+ *  @return A vector of all prime factors of n
+ */
 std::vector<int>
 Primes::PrimeFactors(int n) {
-  // returns a vector of all prime factors of n
   std::vector<int> factors;
 
   for (int i = 2; i <= n; i += 1) {

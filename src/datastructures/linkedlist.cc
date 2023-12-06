@@ -1,5 +1,9 @@
 #include "linkedlist.h"
 
+/** @brief Constructor for LinkedList class
+ *
+ *  @param n Number of nodes in the linked list
+ */
 LinkedList::LinkedList(int n) {
   srand(0);
 
@@ -17,6 +21,9 @@ LinkedList::LinkedList(int n) {
   }
 }
 
+/** @brief Prints the linked list
+ *
+ */
 void
 LinkedList::Print() {
   Node *current = head;
@@ -27,6 +34,10 @@ LinkedList::Print() {
   std::cout << std::endl;
 }
 
+/** @brief Adds a node to the end of the linked list
+ *
+ *  @param n Data to add to the new node
+ */
 void
 LinkedList::AddNode(int n) {
   Node *current = head;
@@ -40,6 +51,11 @@ LinkedList::AddNode(int n) {
   current->next = new_node;
 }
 
+/** @brief Searches the linked list for a node with the given data
+ *
+ *  @param n Data to search for
+ *  @return True if the data is found, false otherwise
+ */
 bool
 LinkedList::SearchList(int n) {
   Node *current = head;
@@ -52,6 +68,9 @@ LinkedList::SearchList(int n) {
   return false;
 }
 
+/** @brief Reverses the linked list
+ *
+ */
 void
 LinkedList::ReverseList() {
   Node *current = head;

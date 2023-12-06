@@ -8,6 +8,12 @@ OpsVector::PrintVector(std::vector<int> &v) {
   std::cout << std::endl;
 }
 
+/**
+ * @brief Add 1 to each element in the vector.
+ *
+ * @param v Vector to modify.
+ * @return The modified vector.
+ */
 std::vector<int>
 OpsVector::ModifyVector(std::vector<int> &v) {
   for (int i = 0; i < (int) v.size(); i += 1) {
@@ -28,6 +34,12 @@ OpsVector::SearchVector(std::vector<int> &v, int n) {
   return ret;
 }
 
+/**
+ * @brief Sorts the vector in ascending order.
+ *
+ * @param v Vector to sort.
+ * @return The sorted vector.
+ */
 std::vector<int>
 OpsVector::SortVector(std::vector<int> &v) {
   std::vector<int> ret = v;
@@ -44,6 +56,12 @@ OpsVector::SortVector(std::vector<int> &v) {
   return ret;
 }
 
+/**
+ * @brief Reverses the vector.
+ *
+ * @param v Vector to reverse.
+ * @return The reversed vector.
+ */
 std::vector<int>
 OpsVector::ReverseVector(std::vector<int> &v) {
   std::vector<int> ret;
@@ -54,6 +72,13 @@ OpsVector::ReverseVector(std::vector<int> &v) {
   return ret;
 }
 
+/**
+ * @brief Rotates the vector by n.
+ *
+ * @param v Vector to rotate.
+ * @param n Number of elements to rotate by.
+ * @return The rotated vector.
+ */
 std::vector<int>
 OpsVector::RotateVector(std::vector<int> &v, int n) {
   std::vector<int> ret;
@@ -67,6 +92,13 @@ OpsVector::RotateVector(std::vector<int> &v, int n) {
   return ret;
 }
 
+/**
+ * @brief Merges two vectors.
+ *
+ * @param v1 First vector.
+ * @param v2 Second vector.
+ * @return The merged vector.
+ */
 std::vector<int>
 OpsVector::MergeVectors(std::vector<int> &v1, std::vector<int> &v2) {
   std::vector<int> ret;
