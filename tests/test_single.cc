@@ -2,6 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "control/single.h"
+#include "generator/genarray.h"
 
 TEST_CASE("SingleForLoop::SumRange::Test", "[test][control][singlefor]") {
   SingleForLoop sfl;
@@ -20,13 +21,17 @@ TEST_CASE("SingleForLoop::SumRange::Benchmark", "[benchmark][control][singlefor]
 
 TEST_CASE("SingleForLoop::MaxRandom::Test", "[test][control][singlefor]") {
   SingleForLoop sfl;
-  REQUIRE(sfl.MaxRandom(0) == 0);
-  REQUIRE(sfl.MaxRandom(10) > 0);
+  GenArray generator;
+
+  REQUIRE(sfl.MaxArray(generator.RandomVector(0, 1)) == 0);
+  REQUIRE(sfl.MaxArray(generator.RandomVector(100, 10)) <= 10);
 }
 
 TEST_CASE("SingleForLoop::MaxRandom::Benchmark", "[benchmark][control][singlefor]") {
   SingleForLoop sfl;
-  BENCHMARK("MaxRandom(10000)") { return sfl.MaxRandom(10000); };
+  GenArray generator;
+
+  BENCHMARK("MaxArray(RandomVector(10000, 100))") { return sfl.MaxArray(generator.RandomVector(10000, 100)); };
 }
 
 TEST_CASE("SingleForLoop::SumModulus::Test", "[test][control][singlefor]") {

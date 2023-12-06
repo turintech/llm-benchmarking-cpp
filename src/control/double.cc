@@ -29,21 +29,16 @@ DoubleForLoop::SumTriangle(int n) {
 }
 
 int
-DoubleForLoop::CountPairs(int n, int m) {
-  // returns number of pairs from a randomly generated array of n numbers.
+DoubleForLoop::CountPairs(std::vector<int> arr) {
+  // returns number of pairs from a vector of size n
   // (each number is between 0 and m)
   // any number that appears twice is counted as a pair
   // any number that appears more than twice is NOT counted as a pair
-  srand(0);
-  int array[n];
   int count = 0;
-  for (int i = 0; i < n; i += 1) {
-    array[i] = rand() % m;
-  }
-  for (int i = 0; i < n; i += 1) {
+  for (int i = 0; i < (int) arr.size(); i += 1) {
     int nDuplicates = 0;
-    for (int j = 0; j < n; j += 1) {
-      if (array[i] == array[j]) {
+    for (int j = 0; j < (int) arr.size(); j += 1) {
+      if (arr[i] == arr[j]) {
         nDuplicates += 1;
       }
     }
@@ -55,21 +50,14 @@ DoubleForLoop::CountPairs(int n, int m) {
 }
 
 int
-DoubleForLoop::CountDuplicates(int n, int m) {
-  // given two random sets of size n, (each number is between 0 and m)
+DoubleForLoop::CountDuplicates(std::vector<int> arr0, std::vector<int> arr1) {
+  // given two arrays of size n,
   // returns the number of instances where the
   // values at the same index are equal
-  srand(0);
-  int array1[n];
-  int array2[n];
   int count = 0;
-  for (int i = 0; i < n; i += 1) {
-    array1[i] = rand() % m;
-    array2[i] = rand() % m;
-  }
-  for (int i = 0; i < n; i += 1) {
-    for (int j = 0; j < n; j += 1) {
-      if (i == j && array1[i] == array2[j]) {
+  for (int i = 0; i < (int) arr0.size(); i += 1) {
+    for (int j = 0; j < (int) arr1.size(); j += 1) {
+      if (i == j && arr0[i] == arr1[j]) {
         count += 1;
       }
     }
@@ -78,19 +66,13 @@ DoubleForLoop::CountDuplicates(int n, int m) {
 }
 
 int
-DoubleForLoop::SumMatrix(int n) {
+DoubleForLoop::SumMatrix(std::vector<std::vector<int>> matrix) {
   // given a 2D array of size n x n, returns the sum of all values in the array
-  srand(0);
-  int array[n][n];
+  int n = (int) matrix.size();
   int sum = 0;
   for (int i = 0; i < n; i += 1) {
     for (int j = 0; j < n; j += 1) {
-      array[i][j] = rand() % 100;
-    }
-  }
-  for (int i = 0; i < n; i += 1) {
-    for (int j = 0; j < n; j += 1) {
-      sum += array[j][i];
+      sum += matrix[j][i];
     }
   }
   return sum;

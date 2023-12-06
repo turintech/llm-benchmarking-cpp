@@ -17,6 +17,7 @@ target_link_libraries(tests
   PRIVATE 
     Catch2::Catch2WithMain 
   PUBLIC 
+    generator_lib
     algorithms_lib 
     control_lib 
     datastructures_lib 

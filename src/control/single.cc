@@ -17,17 +17,12 @@ SingleForLoop::SumRange(int n) {
 }
 
 int
-SingleForLoop::MaxRandom(int n) {
-  // samples n random numbers and returns the max
-  srand(0);
-  int array[n];
+SingleForLoop::MaxArray(std::vector<int> arr) {
+  // Returns the maximum value in an array of size n
   int max = 0;
-  for (int i = 0; i < n; i += 1) {
-    array[i] = rand() % 100;
-  }
-  for (int i = 0; i < n; i += 1) {
-    if (array[i] > max) {
-      max = array[i];
+  for (int i = 0; i < (int) arr.size(); i += 1) {
+    if (arr[i] > max) {
+      max = arr[i];
     }
   }
   return max;

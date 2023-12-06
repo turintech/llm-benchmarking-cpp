@@ -5,7 +5,8 @@
 #include "control/single.h"
 #include "datastructures/linkedlist.h"
 #include "datastructures/vector.h"
-#include "strings/generator.h"
+#include "generator/genarray.h"
+#include "generator/genstring.h"
 #include "strings/strops.h"
 
 void
@@ -14,9 +15,11 @@ _single() {
   std::cout << "---------------" << std::endl;
 
   SingleForLoop single;
+  GenArray generator;
   int n = 1000000;
+  std::vector<int> arr = generator.RandomVector(n, 100);
   std::cout << "SumRange(" << n << "): " << single.SumRange(n) << std::endl;
-  std::cout << "MaxRandom(" << n << "): " << single.MaxRandom(n) << std::endl;
+  std::cout << "MaxArray(Random" << n << "): " << single.MaxArray(arr) << std::endl;
   std::cout << "SumModulus(" << n << ", 2): " << single.SumModulus(n, 2) << std::endl;
 
   std::cout << std::endl;
@@ -28,11 +31,15 @@ _double() {
   std::cout << "---------------" << std::endl;
 
   DoubleForLoop double_;
+  GenArray generator;
   int n = 10000;
+  std::vector<int> arr0 = generator.RandomVector(n, 1000);
+  std::vector<int> arr1 = generator.RandomVector(n, 100);
+  std::vector<int> arr2 = generator.RandomVector(n, 100);
   std::cout << "SumSquare(" << n << "): " << double_.SumSquare(n) << std::endl;
   std::cout << "Triangle(" << n << "): " << double_.SumTriangle(n) << std::endl;
-  std::cout << "CountPairs(" << n << "): " << double_.CountPairs(n, 1000) << std::endl;
-  std::cout << "CountDuplicates(" << n << "): " << double_.CountDuplicates(n, 100) << std::endl;
+  std::cout << "CountPairs(" << n << "): " << double_.CountPairs(arr0) << std::endl;
+  std::cout << "CountDuplicates(" << n << "): " << double_.CountDuplicates(arr1, arr2) << std::endl;
 
   std::cout << std::endl;
 }
@@ -42,7 +49,7 @@ _strops() {
   std::cout << "String Operations" << std::endl;
   std::cout << "-----------------" << std::endl;
 
-  Generator generator;
+  GenString generator;
   StrOps strops;
   std::string randS = generator.RandomString(1000000);
   std::string s0 = "racecar";

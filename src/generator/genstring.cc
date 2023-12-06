@@ -1,9 +1,9 @@
-#include "generator.h"
+#include "genstring.h"
 
-Generator::Generator() {}
+GenString::GenString() {}
 
 std::string
-Generator::RandomString(int n) {
+GenString::RandomString(int n) {
   std::string ret;
 
   srand(0);
