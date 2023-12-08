@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "algorithms/primes.h"
+#include "algorithms/sort.h"
 #include "control/double.h"
 #include "control/single.h"
 #include "datastructures/linkedlist.h"
@@ -76,6 +77,27 @@ _primes() {
 }
 
 void
+_sort() {
+  std::cout << "Sort" << std::endl;
+  std::cout << "----" << std::endl;
+
+  std::vector<int> v = GenVector::RandomVector(20, 10);
+  std::cout << "RandomVector(20): ";
+  OpsVector::PrintVector(v);
+  std::cout << "SortVector(RandomVector(20)): ";
+  std::vector<int> vSorted = Sort::SortVector(v);
+  OpsVector::PrintVector(vSorted);
+  std::cout << "DutchFlagPartition(RandomVector(20)): ";
+  std::vector<int> vPartitioned = Sort::DutchFlagPartition(v, 5);
+  OpsVector::PrintVector(vPartitioned);
+  std::cout << "MaxN(RandomVector(20), 5): ";
+  std::vector<int> vMaxN = Sort::MaxN(v, 5);
+  OpsVector::PrintVector(vMaxN);
+
+  std::cout << std::endl;
+}
+
+void
 _vector() {
   std::cout << "Vector" << std::endl;
   std::cout << "------" << std::endl;
@@ -110,7 +132,7 @@ _vector() {
   std::cout << "MergeVectors(RandomVector(20), RandomVector(20)): ";
   OpsVector::PrintVector(vMerged);
 
-  std::cout << std::endl << std::endl;
+  std::cout << std::endl;
 }
 
 void
@@ -137,6 +159,7 @@ main(int argc, char **argv) {
   _double();
   _strops();
   _primes();
+  _sort();
   _vector();
   _linkedlist();
   return 0;

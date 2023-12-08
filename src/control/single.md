@@ -13,17 +13,15 @@ over this array to sum values.
 - It is even more efficient to parallelize this task, summing over groups
 of numbers before adding these sums together to get the total.
 
-## MaxRandom
+## MaxVector
 
-This function samples `n` random numbers and returns the max. This implementation
-creates an intermediate array to store random values before iterating over this
-array to find the maximum value (by storing a max value and updating it whenever
-an element in the array is greater).
+Returns the max value of a vector. This function is close to optimal 
+(for a serial implementation), since max value requires linear time. 
+However there are a few possible improvements.
 
-- It is more efficient to iterate in some for loop and only record the maximum
-value.
-- It is even more efficient to parallelize this task, finding the max values of
-smaller groups of random numbers and combining them.
+- Compute vector size once and store it before the loop
+- Default `max` should be the first element of the vector (assuming not empty)
+to account for all negative cases.
 
 ## SumModulus
 

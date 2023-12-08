@@ -24,10 +24,14 @@ SingleForLoop::SumRange(int n) {
  *
  * @param arr the array to search
  * @return the maximum value in the array
+ *
+ * @todo Make a function that doesn't pass by reference
+ * a code optimiser would probably try to update the input
+ * which will make the unit tests fail, so we need a way
+ * to make sure that doesn't happen
  */
 int
 SingleForLoop::MaxVector(std::vector<int> &arr) {
-  // Returns the maximum value in an array of size n
   int max = 0;
   for (int i = 0; i < (int) arr.size(); i += 1) {
     if (arr[i] > max) {

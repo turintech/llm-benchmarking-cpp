@@ -33,7 +33,8 @@ necessary.
 
 ## SumMatrix
 
-Returns the sum of a (n, n,) tensor.
+Returns the sum of a (n, n,) tensor. This implementation is already
+optimised serially.
 
 - This task would work better parallelized.
 
