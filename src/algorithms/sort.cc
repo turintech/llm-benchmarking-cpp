@@ -47,11 +47,13 @@ Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
 std::vector<int>
 Sort::MaxN(std::vector<int> &v, int n) {
   std::vector<int> ret;
+  // So that we don't modify the original vector
+  std::vector<int> temp(v);
 
-  std::sort(v.begin(), v.end());
+  std::sort(temp.begin(), temp.end());
 
-  for (int i = (int) v.size() - 1; i >= (int) v.size() - n; i -= 1) {
-    ret.push_back(v[i]);
+  for (int i = (int) temp.size() - 1; i >= (int) temp.size() - n; i -= 1) {
+    ret.push_back(temp[i]);
   }
 
   return ret;
