@@ -81,18 +81,24 @@ _sort() {
   std::cout << "Sort" << std::endl;
   std::cout << "----" << std::endl;
 
-  std::vector<int> v = GenVector::RandomVector(20, 10);
+  std::vector<int> v0 = GenVector::RandomVector(20, 10);
   std::cout << "RandomVector(20): ";
-  OpsVector::PrintVector(v);
-  std::cout << "DutchFlagPartition(RandomVector(20)): ";
-  std::vector<int> vPartitioned = Sort::DutchFlagPartition(v, 5);
-  OpsVector::PrintVector(vPartitioned);
-  std::cout << "MaxN(RandomVector(20), 5): ";
-  std::vector<int> vMaxN = Sort::MaxN(v, 5);
-  OpsVector::PrintVector(vMaxN);
+  OpsVector::PrintVector(v0);
   std::cout << "SortVector(RandomVector(20)): ";
-  Sort::SortVector(v);
-  OpsVector::PrintVector(v);
+  Sort::SortVector(v0);
+  OpsVector::PrintVector(v0);
+  std::vector<int> v1 = GenVector::RandomVector(20, 10);
+  std::cout << "RandomVector(20): ";
+  OpsVector::PrintVector(v1);
+  std::cout << "DutchFlagPartition(RandomVector(20, 5)): ";
+  Sort::DutchFlagPartition(v1, 5);
+  OpsVector::PrintVector(v1);
+  std::vector<int> v2 = GenVector::RandomVector(20, 10);
+  std::cout << "RandomVector(20): ";
+  OpsVector::PrintVector(v2);
+  std::cout << "MaxN(20, 5): ";
+  std::vector<int> vMaxN = Sort::MaxN(v2, 5);
+  OpsVector::PrintVector(vMaxN);
 
   std::cout << std::endl;
 }

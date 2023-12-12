@@ -6,7 +6,6 @@
  * @brief Sorts a vector of integers (in place)
  *
  * @param v the vector to sort
- * @return the sorted vector
  */
 void
 Sort::SortVector(std::vector<int> &v) {
@@ -18,9 +17,8 @@ Sort::SortVector(std::vector<int> &v) {
  *
  * @param v the vector to partition
  * @param pivot_value value of the pivot
- * @return the partitioned vector
  */
-std::vector<int>
+void
 Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
   int next_value = 0;
 
@@ -37,8 +35,6 @@ Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
       next_value += 1;
     }
   }
-
-  return v;
 }
 
 /**
