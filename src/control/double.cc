@@ -37,21 +37,21 @@ DoubleForLoop::SumTriangle(int n) {
 }
 
 /**
- * @brief Counts the number of pairs in an array
+ * @brief Counts the number of pairs in an vay
  *
  * Pairs are defined as exactly two instances of the same value in
- * the array.
+ * the vay.
  *
- * @param arr
- * @return the number of pairs in an array
+ * @param v
+ * @return the number of pairs in an vay
  */
 int
-DoubleForLoop::CountPairs(std::vector<int> arr) {
+DoubleForLoop::CountPairs(std::vector<int> v) {
   int count = 0;
-  for (int i = 0; i < (int) arr.size(); i += 1) {
+  for (int i = 0; i < (int) v.size(); i += 1) {
     int nDuplicates = 0;
-    for (int j = 0; j < (int) arr.size(); j += 1) {
-      if (arr[i] == arr[j]) {
+    for (int j = 0; j < (int) v.size(); j += 1) {
+      if (v[i] == v[j]) {
         nDuplicates += 1;
       }
     }
@@ -65,16 +65,16 @@ DoubleForLoop::CountPairs(std::vector<int> arr) {
 /**
  * @brief Counts the number of instances where the values at the same index are equal
  *
- * @param arr0
- * @param arr1
+ * @param v0
+ * @param v1
  * @return the number of instances where the values at the same index are equal
  */
 int
-DoubleForLoop::CountDuplicates(std::vector<int> arr0, std::vector<int> arr1) {
+DoubleForLoop::CountDuplicates(std::vector<int> v0, std::vector<int> v1) {
   int count = 0;
-  for (int i = 0; i < (int) arr0.size(); i += 1) {
-    for (int j = 0; j < (int) arr1.size(); j += 1) {
-      if (i == j && arr0[i] == arr1[j]) {
+  for (int i = 0; i < (int) v0.size(); i += 1) {
+    for (int j = 0; j < (int) v1.size(); j += 1) {
+      if (i == j && v0[i] == v1[j]) {
         count += 1;
       }
     }
@@ -83,10 +83,10 @@ DoubleForLoop::CountDuplicates(std::vector<int> arr0, std::vector<int> arr1) {
 }
 
 /**
- * @brief Sums all values in a 2D array
+ * @brief Sums all values in a 2D vay
  *
  * @param matrix
- * @return the sum of all values in a 2D array
+ * @return the sum of all values in a 2D vay
  */
 int
 DoubleForLoop::SumMatrix(std::vector<std::vector<int>> matrix) {
