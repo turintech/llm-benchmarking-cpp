@@ -5,9 +5,11 @@
 #include "generator/genvector.h"
 
 TEST_CASE("Vector::ModifyVector::Test", "[test][datastructures][vector]") {
-  std::vector<int> v = GenVector::RandomVector(1000, 100);
+  std::vector<int> v = {1, 2, 3, 4, 5};
   REQUIRE(OpsVector::ModifyVector(v).size() == v.size());
-  REQUIRE(OpsVector::ModifyVector(v).at(0) == v.at(0) + 1);
+  for (int i = 0; i < v.size(); i++) {
+    REQUIRE(OpsVector::ModifyVector(v).at(i) == v.at(i) + 1);
+  }
 }
 
 TEST_CASE("Vector::ModifyVector::Benchmark", "[benchmark][datastructures][vector]") {
@@ -18,11 +20,14 @@ TEST_CASE("Vector::ModifyVector::Benchmark", "[benchmark][datastructures][vector
 }
 
 TEST_CASE("Vector::SortVector::Test", "[test][datastructures][vector]") {
-  std::vector<int> v = GenVector::RandomVector(1000, 100);
-  REQUIRE(OpsVector::SortVector(v).size() == v.size());
-  REQUIRE(OpsVector::SortVector(v).at(0) <= OpsVector::SortVector(v).at(1));
-  REQUIRE(OpsVector::SortVector(v).at(100) <= OpsVector::SortVector(v).at(101));
-  REQUIRE(OpsVector::SortVector(v).at(998) <= OpsVector::SortVector(v).at(999));
+  std::vector<int> v0 = {5, 4, 3, 2, 1};
+  std::vector<int> v0sorted = {1, 2, 3, 4, 5};
+  REQUIRE(OpsVector::SortVector(v0).size() == v0.size());
+  REQUIRE(OpsVector::SortVector(v0) == v0sorted);
+  std::vector<int> v1 = {3, 3, 2, 2, 4, 3, 0, 5};
+  std::vector<int> v1sorted = {0, 2, 2, 3, 3, 3, 4, 5};
+  REQUIRE(OpsVector::SortVector(v1).size() == v1.size());
+  REQUIRE(OpsVector::SortVector(v1) == v1sorted);
 }
 
 TEST_CASE("Vector::SortVector::Benchmark", "[benchmark][datastructures][vector]") {
