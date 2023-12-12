@@ -37,11 +37,13 @@ DoubleForLoop::SumTriangle(int n) {
 }
 
 /**
- * @brief Sums all values from 0 to n that are divisible by m
+ * @brief Counts the number of pairs in an array
  *
- * @param n the upper bound (non-inclusive)
- * @param m the modulus
- * @return the sum of all values from 0 to n that are divisible by m
+ * Pairs are defined as exactly two instances of the same value in
+ * the array.
+ *
+ * @param arr
+ * @return the number of pairs in an array
  */
 int
 DoubleForLoop::CountPairs(std::vector<int> arr) {
