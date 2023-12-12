@@ -84,15 +84,15 @@ _sort() {
   std::vector<int> v = GenVector::RandomVector(20, 10);
   std::cout << "RandomVector(20): ";
   OpsVector::PrintVector(v);
-  std::cout << "SortVector(RandomVector(20)): ";
-  std::vector<int> vSorted = Sort::SortVector(v);
-  OpsVector::PrintVector(vSorted);
   std::cout << "DutchFlagPartition(RandomVector(20)): ";
   std::vector<int> vPartitioned = Sort::DutchFlagPartition(v, 5);
   OpsVector::PrintVector(vPartitioned);
   std::cout << "MaxN(RandomVector(20), 5): ";
   std::vector<int> vMaxN = Sort::MaxN(v, 5);
   OpsVector::PrintVector(vMaxN);
+  std::cout << "SortVector(RandomVector(20)): ";
+  Sort::SortVector(v);
+  OpsVector::PrintVector(v);
 
   std::cout << std::endl;
 }

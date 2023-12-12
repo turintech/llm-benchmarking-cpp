@@ -4,8 +4,7 @@
 #include <vector>
 
 namespace Sort {
-
-std::vector<int> SortVector(std::vector<int> &arr);
+void SortVector(std::vector<int> &arr);
 std::vector<int> DutchFlagPartition(std::vector<int> &arr, int pivot_value = 0);
 std::vector<int> MaxN(std::vector<int> &arr, int n);
 
