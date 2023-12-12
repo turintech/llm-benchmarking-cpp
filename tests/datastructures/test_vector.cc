@@ -40,7 +40,6 @@ TEST_CASE("Vector::SortVector::Test", "[test][datastructures][vector]") {
   REQUIRE(OpsVector::SortVector(v0) == v0sorted);
   std::vector<int> v1 = {3, 3, 2, 2, 4, 3, 0, 5};
   std::vector<int> v1sorted = {0, 2, 2, 3, 3, 3, 4, 5};
-  REQUIRE(OpsVector::SortVector(v1).size() == v1.size());
   REQUIRE(OpsVector::SortVector(v1) == v1sorted);
 }
 
@@ -72,13 +71,15 @@ TEST_CASE("Vector::SearchVector::Benchmark", "[benchmark][datastructures][vector
 }
 
 TEST_CASE("Vector::ReverseVector::Test", "[test][datastructures][vector]") {
-  std::vector<int> v = {1, 2, 3, 4, 5};
-  REQUIRE(OpsVector::ReverseVector(v).size() == v.size());
-  REQUIRE(OpsVector::ReverseVector(v).at(0) == 5);
-  REQUIRE(OpsVector::ReverseVector(v).at(1) == 4);
-  REQUIRE(OpsVector::ReverseVector(v).at(2) == 3);
-  REQUIRE(OpsVector::ReverseVector(v).at(3) == 2);
-  REQUIRE(OpsVector::ReverseVector(v).at(4) == 1);
+  std::vector<int> v0 = {1, 2, 3, 4, 5};
+  std::vector<int> v0rev = {5, 4, 3, 2, 1};
+  std::vector<int> v1 = {1, 3, 2, 0};
+  std::vector<int> v1rev = {0, 2, 3, 1};
+  std::vector<int> v2 = {1, 1, 1, 1, 1};
+  REQUIRE(OpsVector::ReverseVector(v0).size() == v0.size());
+  REQUIRE(OpsVector::ReverseVector(v0) == v0rev);
+  REQUIRE(OpsVector::ReverseVector(v1) == v1rev);
+  REQUIRE(OpsVector::ReverseVector(v2) == v2);
 }
 
 TEST_CASE("Vector::ReverseVector::Benchmark", "[benchmark][datastructures][vector]") {
@@ -90,18 +91,10 @@ TEST_CASE("Vector::ReverseVector::Benchmark", "[benchmark][datastructures][vecto
 
 TEST_CASE("Vector::RotateVector::Test", "[test][datastructures][vector]") {
   std::vector<int> v = {1, 2, 3, 4, 5};
-  REQUIRE(OpsVector::RotateVector(v, 2).size() == v.size());
-  REQUIRE(OpsVector::RotateVector(v, 2).at(0) == 3);
-  REQUIRE(OpsVector::RotateVector(v, 2).at(1) == 4);
-  REQUIRE(OpsVector::RotateVector(v, 2).at(2) == 5);
-  REQUIRE(OpsVector::RotateVector(v, 2).at(3) == 1);
-  REQUIRE(OpsVector::RotateVector(v, 2).at(4) == 2);
-  REQUIRE(OpsVector::RotateVector(v, 5).size() == v.size());
-  REQUIRE(OpsVector::RotateVector(v, 5).at(0) == 1);
-  REQUIRE(OpsVector::RotateVector(v, 5).at(1) == 2);
-  REQUIRE(OpsVector::RotateVector(v, 5).at(2) == 3);
-  REQUIRE(OpsVector::RotateVector(v, 5).at(3) == 4);
-  REQUIRE(OpsVector::RotateVector(v, 5).at(4) == 5);
+  std::vector<int> vrot2 = {3, 4, 5, 1, 2};
+  std::vector<int> vrot5 = {1, 2, 3, 4, 5};
+  REQUIRE(OpsVector::RotateVector(v, 2) == vrot2);
+  REQUIRE(OpsVector::RotateVector(v, 5) == vrot5);
 }
 
 TEST_CASE("Vector::RotateVector::Benchmark", "[benchmark][datastructures][vector]") {
@@ -114,11 +107,8 @@ TEST_CASE("Vector::RotateVector::Benchmark", "[benchmark][datastructures][vector
 TEST_CASE("Vector::MergeVectors::Test", "[test][datastructures][vector]") {
   std::vector<int> v1 = {1, 2, 3, 4, 5};
   std::vector<int> v2 = {6, 7, 8, 9, 10};
-  REQUIRE(OpsVector::MergeVectors(v1, v2).size() == v1.size() + v2.size());
-  REQUIRE(OpsVector::MergeVectors(v1, v2).at(0) == 1);
-  REQUIRE(OpsVector::MergeVectors(v1, v2).at(1) == 2);
-  REQUIRE(OpsVector::MergeVectors(v1, v2).at(5) == 6);
-  REQUIRE(OpsVector::MergeVectors(v1, v2).at(9) == 10);
+  std::vector<int> vMerged = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  REQUIRE(OpsVector::MergeVectors(v1, v2) == vMerged);
 }
 
 TEST_CASE("Vector::MergeVectors::Benchmark", "[benchmark][datastructures][vector]") {
