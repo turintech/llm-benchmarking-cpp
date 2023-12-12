@@ -27,25 +27,21 @@ TEST_CASE("DoubleForLoop::SumTriangle::Benchmark", "[benchmark][control][doublef
 }
 
 TEST_CASE("DoubleForLoop::CountPairs::Test", "[test][control][doublefor]") {
-  // For each case, we generate a random array of size `n` with values between
-  // 0 and `m`. We then count the number of pairs in the array.
-  //
-  // When `m` is 1, the result is deterministic. There are no pairs unless
-  // `n` is 2, for which there must be one pair.
-  // When `m` > 1, the result is non-deterministic. We can assert that the
-  // maximum number of pairs is equal to `m`
-  REQUIRE(DoubleForLoop::CountPairs(GenVector::RandomVector(0, 1)) == 0);
-  REQUIRE(DoubleForLoop::CountPairs(GenVector::RandomVector(1, 1)) == 0);
-  REQUIRE(DoubleForLoop::CountPairs(GenVector::RandomVector(2, 1)) == 1);
-  REQUIRE(DoubleForLoop::CountPairs(GenVector::RandomVector(10, 1)) == 0);
-  REQUIRE(DoubleForLoop::CountPairs(GenVector::RandomVector(10, 2)) <= 2);
-  REQUIRE(DoubleForLoop::CountPairs(GenVector::RandomVector(10, 4)) <= 4);
+  std::vector<int> var0 = {0};
+  std::vector<int> var1 = {1, 2, 3};
+  std::vector<int> var2 = {1, 1, 1};
+  std::vector<int> var3 = {1, 1, 2};
+  std::vector<int> var4 = {1, 1, 2, 2};
+  std::vector<int> var5 = {0, 0, 1, 1, 2, 2};
+  std::vector<int> var6 = {0, 0, 1, 1, 2, 2, 3};
 
-  std::vector<int> var0 = {0, 0, 1, 1, 2, 2};
-  REQUIRE(DoubleForLoop::CountPairs(var0) == 3);
-
-  std::vector<int> var1 = {0, 0, 1, 1, 2, 2, 3};
-  REQUIRE(DoubleForLoop::CountPairs(var1) == 3);
+  REQUIRE(DoubleForLoop::CountPairs(var0) == 0);
+  REQUIRE(DoubleForLoop::CountPairs(var1) == 0);
+  REQUIRE(DoubleForLoop::CountPairs(var2) == 0);
+  REQUIRE(DoubleForLoop::CountPairs(var3) == 1);
+  REQUIRE(DoubleForLoop::CountPairs(var4) == 2);
+  REQUIRE(DoubleForLoop::CountPairs(var5) == 3);
+  REQUIRE(DoubleForLoop::CountPairs(var6) == 3);
 }
 
 TEST_CASE("DoubleForLoop::CountPairs::Benchmark", "[benchmark][control][doublefor]") {
@@ -53,26 +49,22 @@ TEST_CASE("DoubleForLoop::CountPairs::Benchmark", "[benchmark][control][doublefo
 }
 
 TEST_CASE("DoubleForLoop::CountDuplicates::Test", "[test][control][doublefor]") {
-  // For each case, we generate a random array of size `n` with values between
-  // 0 and `m`. We then count the number of pairs in the array.
-  //
-  // When `m` is 1, the result is deterministic. There can only be duplicates.
-  // When `m` > 1, the result is non-deterministic. We can assert that the max
-  // number of duplicates is equal to `n`.
-  REQUIRE(DoubleForLoop::CountDuplicates(GenVector::RandomVector(0, 1), GenVector::RandomVector(0, 1)) == 0);
-  REQUIRE(DoubleForLoop::CountDuplicates(GenVector::RandomVector(1, 1), GenVector::RandomVector(1, 1)) == 1);
-  REQUIRE(DoubleForLoop::CountDuplicates(GenVector::RandomVector(2, 1), GenVector::RandomVector(2, 1)) == 2);
-  REQUIRE(DoubleForLoop::CountDuplicates(GenVector::RandomVector(10, 1), GenVector::RandomVector(10, 1)) == 10);
-  REQUIRE(DoubleForLoop::CountDuplicates(GenVector::RandomVector(10, 2), GenVector::RandomVector(10, 2)) <= 10);
-  REQUIRE(DoubleForLoop::CountDuplicates(GenVector::RandomVector(10, 4), GenVector::RandomVector(10, 4)) <= 10);
+  std::vector<int> varL0 = {0};
+  std::vector<int> varR0 = {0};
+  std::vector<int> varL1 = {1, 2, 3};
+  std::vector<int> varR1 = {2, 3, 1};
+  std::vector<int> varL2 = {1, 1, 1};
+  std::vector<int> varR2 = {1, 2, 3};
+  std::vector<int> varL3 = {1, 1, 2};
+  std::vector<int> varR3 = {1, 2, 2};
+  std::vector<int> varL4 = {1, 1, 2, 2};
+  std::vector<int> varR4 = {1, 1, 2, 2};
 
-  std::vector<int> var0 = {0, 1, 2, 3, 4};
-  std::vector<int> var1 = {0, 2, 3, 3, 4};
-  std::vector<int> var2 = {0, 1, 3, 3, 5};
-
-  REQUIRE(DoubleForLoop::CountDuplicates(var0, var1) == 3);
-  REQUIRE(DoubleForLoop::CountDuplicates(var0, var2) == 3);
-  REQUIRE(DoubleForLoop::CountDuplicates(var1, var2) == 3);
+  REQUIRE(DoubleForLoop::CountDuplicates(varL0, varR0) == 1);
+  REQUIRE(DoubleForLoop::CountDuplicates(varL1, varR1) == 0);
+  REQUIRE(DoubleForLoop::CountDuplicates(varL2, varR2) == 1);
+  REQUIRE(DoubleForLoop::CountDuplicates(varL3, varR3) == 2);
+  REQUIRE(DoubleForLoop::CountDuplicates(varL4, varR4) == 4);
 }
 
 TEST_CASE("DoubleForLoop::CountDuplicates::Benchmark", "[benchmark][control][doublefor]") {
