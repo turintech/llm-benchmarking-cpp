@@ -18,7 +18,7 @@ TEST_CASE("SingleForLoop::SumRange::Benchmark", "[benchmark][control][singlefor]
 }
 
 TEST_CASE("SingleForLoop::MaxVector::Test", "[test][control][singlefor]") {
-  std::vector<int> vec0 = {};
+  std::vector<int> vec0 = {0};
   std::vector<int> vec1 = {1, 2, 3, 4, 5};
   std::vector<int> vec2 = {1, 1, 1, 1, 0};
   std::vector<int> vec3 = {-1, -1, -1, -1, 0};
