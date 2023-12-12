@@ -10,6 +10,20 @@ TEST_CASE("Vector::ModifyVector::Test", "[test][datastructures][vector]") {
   for (int i = 0; i < v.size(); i++) {
     REQUIRE(OpsVector::ModifyVector(v).at(i) == v.at(i) + 1);
   }
+
+  std::vector v0 = {0};
+  std::vector v0ref = {1};
+  std::vector v1 = {1, 2, 3};
+  std::vector v1ref = {2, 3, 4};
+  std::vector v2 = {1, 1, 1};
+  std::vector v2ref = {2, 2, 2};
+  std::vector v3 = {1, 1, 2};
+  std::vector v3ref = {2, 2, 3};
+
+  REQUIRE(OpsVector::ModifyVector(v0) == v0ref);
+  REQUIRE(OpsVector::ModifyVector(v1) == v1ref);
+  REQUIRE(OpsVector::ModifyVector(v2) == v2ref);
+  REQUIRE(OpsVector::ModifyVector(v3) == v3ref);
 }
 
 TEST_CASE("Vector::ModifyVector::Benchmark", "[benchmark][datastructures][vector]") {
