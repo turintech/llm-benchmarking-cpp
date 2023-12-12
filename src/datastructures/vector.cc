@@ -49,7 +49,7 @@ OpsVector::SearchVector(std::vector<int> &v, int n) {
  */
 std::vector<int>
 OpsVector::SortVector(std::vector<int> &v) {
-  std::vector<int> ret = v;
+  std::vector<int> ret(v);
 
   for (int i = 0; i < (int) ret.size(); i += 1) {
     for (int j = 0; j < (int) ret.size() - 1; j += 1) {
