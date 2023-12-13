@@ -19,8 +19,6 @@ TEST_CASE("List::Shuffle::Test", "[test][datastructures][list]") {
 TEST_CASE("List::Shuffle::Benchmark", "[benchmark][datastructures][list]") {
   std::list l0 = GenList::RandomList(1000, 100);
   BENCHMARK("Shuffle(1000)") { return OpsList::Shuffle(l0); };
-  std::list l1 = GenList::RandomList(10000, 100);
-  BENCHMARK("Shuffle(10000)") { return OpsList::Shuffle(l1); };
 }
 
 TEST_CASE("List::Slice::Test", "[test][datastructures][list]") {

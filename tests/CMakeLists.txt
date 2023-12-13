@@ -11,6 +11,7 @@ FetchContent_MakeAvailable(Catch2)
 add_executable(tests 
   test.cc 
   algorithms/test_primes.cc
+  algorithms/test_sort.cc
   control/test_single.cc
   control/test_double.cc
   datastructures/test_vector.cc
