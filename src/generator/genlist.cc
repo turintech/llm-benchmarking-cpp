@@ -1,5 +1,7 @@
 #include "genlist.h"
 
+#include <cstdlib>
+
 /** @brief Generates a random list of length n
  *
  *  @param n Length of the list to generate
