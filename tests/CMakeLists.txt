@@ -23,8 +23,8 @@ target_link_libraries(tests
     Catch2::Catch2WithMain 
   PUBLIC 
     generator_lib
+    datastructures_lib 
     algorithms_lib 
     control_lib 
-    datastructures_lib 
     strings_lib
 )

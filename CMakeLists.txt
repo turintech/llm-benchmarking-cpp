@@ -8,5 +8,3 @@ set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_subdirectory(src)
 add_subdirectory(tests)
 
-add_executable(main src/main.cc)
-target_link_libraries(main generator_lib algorithms_lib control_lib datastructures_lib strings_lib)
