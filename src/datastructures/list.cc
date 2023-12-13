@@ -1,20 +1,41 @@
 #include "list.h"
 
-/** @brief
+/** @brief shuffles a list into a new list
  *
+ * @param l the list to shuffle
+ * @return a new list with the elements of l shuffled
  */
 std::list<int>
 OpsList::Shuffle(std::list<int> &l) {
+  std::list<int> tmp = l;
   std::list<int> ret;
   srand(0);
 
-  while (l.size() > 0) {
-    int r = rand() % l.size();
-    std::_List_iterator<int> it = l.begin();
+  while (!tmp.empty()) {
+    int r = rand() % tmp.size();
+    std::list<int>::iterator it = tmp.begin();
     std::advance(it, r);
     ret.push_back(*it);
-    l.erase(it);
+    tmp.erase(it);
   }
 
-  return l;
+  return ret;
+}
+
+/** @brief slices a list into a new list
+ *
+ * @param l the list to slice
+ * @param start the start index of the slice
+ * @param end the end index of the slice (exclusive)
+ * @return a new list with the elements of l sliced
+ */
+std::list<int>
+OpsList::Slice(std::list<int> &l, int start, int end) {
+  std::list<int> ret;
+  for (int i = start; i < end; i++) {
+    std::list<int>::iterator it = l.begin();
+    std::advance(it, i);
+    ret.push_back(*it);
+  }
+  return ret;
 }

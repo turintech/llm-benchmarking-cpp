@@ -7,6 +7,7 @@
 namespace OpsList {
 
 std::list<int> Shuffle(std::list<int> &l);
+std::list<int> Slice(std::list<int> &l, int start, int end);
 
 };   // namespace OpsList
 

@@ -37,7 +37,7 @@ $(BUILD)/%.o: $(SRC)/%.cc
 
 # Cleaning
 clean:
-	rm -f $(BUILD)
+	rm -rf $(BUILD)
 
 # Phony
 .PHONY: all clean
