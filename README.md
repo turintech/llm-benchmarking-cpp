@@ -11,7 +11,7 @@ make && make compile
 Run Main:
 
 ```shell
-./build/main
+./build/src/main
 ```
 
 Run Unit Tests:
