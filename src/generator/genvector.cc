@@ -6,12 +6,12 @@
  *  @param m Upper bound (non-inclusive) of the values in the vector
  *  @return A random vector of length n
  */
-std::vector<int>
+ std::vector<int>
 GenVector::RandomVector(int n, int m) {
-  std::vector<int> ret = std::vector<int>(n);
+  std::vector<int> ret(n);
 
   srand(0);
-  for (int i = 0; i < n; i += 1) {
+  for (int i = 0; i < n; i++) {
     ret[i] = rand() % m;
   }
 

@@ -1,11 +1,11 @@
 #include "strops.h"
 
-std::string
+ std::string
 StrOps::ReverseString(std::string &s) {
   std::string ret;
 
   for (std::string::reverse_iterator rit = s.rbegin(); rit != s.rend(); ++rit) {
-    ret.insert(ret.end(), *rit);
+    ret += *rit;
   }
   return ret;
 }

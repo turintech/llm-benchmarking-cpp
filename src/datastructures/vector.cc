@@ -51,12 +51,10 @@ std::vector<int>
 OpsVector::SortVector(std::vector<int> &v) {
   std::vector<int> ret = v;
 
-  for (int i = 0; i < (int) ret.size(); i += 1) {
-    for (int j = 0; j < (int) ret.size() - 1; j += 1) {
+for (int i = 0; i < ret.size(); i++) {
+    for (int j = 0; j < ret.size() - i - 1; j++) {
       if (ret[j] > ret[j + 1]) {
-        int temp = ret[j];
-        ret[j] = ret[j + 1];
-        ret[j + 1] = temp;
+        std::swap(ret[j], ret[j + 1]);
       }
     }
   }

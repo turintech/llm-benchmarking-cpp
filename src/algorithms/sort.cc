@@ -53,11 +53,9 @@ std::vector<int>
 Sort::MaxN(std::vector<int> &arr, int n) {
   std::vector<int> ret;
 
-  std::sort(arr.begin(), arr.end());
+  std::partial_sort(arr.begin(), arr.begin() + n, arr.end(), std::greater<int>());
 
-  for (int i = (int) arr.size() - 1; i >= (int) arr.size() - n; i -= 1) {
-    ret.push_back(arr[i]);
-  }
+  ret.assign(arr.begin(), arr.begin() + n);
 
   return ret;
 }

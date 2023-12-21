@@ -47,10 +47,8 @@ LinkedList::RandomLinkedList(int n, int m) {
  */
 void
 LinkedList::Print() {
-  Node *current = head;
-  while (current != nullptr) {
+  for(Node *current = head; current != nullptr; current = current->next) {
     std::cout << current->data << " ";
-    current = current->next;
   }
   std::cout << std::endl;
 }
