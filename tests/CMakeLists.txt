@@ -17,6 +17,7 @@ add_executable(tests
   datastructures/test_vector.cc
   datastructures/test_linkedlist.cc
   datastructures/test_list.cc
+  math/test_vectoralgebra.cc
 )
 target_link_libraries(tests 
   PRIVATE 
@@ -27,4 +28,5 @@ target_link_libraries(tests
     algorithms_lib 
     control_lib 
     strings_lib
+    math_lib
 )

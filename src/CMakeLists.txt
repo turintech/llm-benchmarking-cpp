@@ -3,6 +3,7 @@ add_subdirectory(datastructures)
 add_subdirectory(algorithms)
 add_subdirectory(control)
 add_subdirectory(strings)
+add_subdirectory(math)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -13,4 +14,5 @@ target_link_libraries(main
   algorithms_lib 
   control_lib 
   strings_lib
+  math_lib
 )

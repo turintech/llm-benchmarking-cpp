@@ -8,6 +8,7 @@
 namespace OpsVector {
 
 void PrintVector(std::vector<int> &v);
+void PrintVector(std::vector<double> &v);
 std::vector<int> ModifyVector(std::vector<int> &v);
 std::vector<int> SearchVector(std::vector<int> &v, int n);
 std::vector<int> SortVector(std::vector<int> &v);

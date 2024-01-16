@@ -6,8 +6,10 @@
 #include "control/single.h"
 #include "datastructures/linkedlist.h"
 #include "datastructures/vector.h"
+#include "generator/genarray.h"
 #include "generator/genstring.h"
 #include "generator/genvector.h"
+#include "math/vectoralgebra.h"
 #include "strings/strops.h"
 
 void
@@ -159,6 +161,26 @@ _linkedlist() {
   std::cout << std::endl;
 }
 
+void
+_vectoralgebra() {
+  std::cout << "Vector Algebra" << std::endl;
+  std::cout << "--------------" << std::endl;
+
+  int n = 20;
+  std::vector<double> x = GenVector::RandomVectorDouble(n, -10, 10);
+  std::vector<double> h = GenVector::RandomVectorDouble(3, -1, 1);
+  OpsVector::PrintVector(x);
+  OpsVector::PrintVector(h);
+
+  std::vector<double> y = MathVectorAlgebra::Cubic(1, 2, 3, 4, x);
+  std::cout << "Cubic(1, 2, 3, 4, x): ";
+  OpsVector::PrintVector(y);
+
+  std::vector<double> z = MathVectorAlgebra::Convolve(1, h, x);
+  std::cout << "Convolve(1, h, x): ";
+  OpsVector::PrintVector(z);
+}
+
 int
 main(int argc, char **argv) {
   _single();
@@ -168,5 +190,6 @@ main(int argc, char **argv) {
   _sort();
   _vector();
   _linkedlist();
+  _vectoralgebra();
   return 0;
 }

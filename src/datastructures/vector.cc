@@ -8,6 +8,14 @@ OpsVector::PrintVector(std::vector<int> &v) {
   std::cout << std::endl;
 }
 
+void
+OpsVector::PrintVector(std::vector<double> &v) {
+  for (int i = 0; i < (int) v.size(); i += 1) {
+    std::cout << v[i] << " ";
+  }
+  std::cout << std::endl;
+}
+
 /**
  * @brief Add 1 to each element in the vector.
  *
