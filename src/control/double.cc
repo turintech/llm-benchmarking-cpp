@@ -9,13 +9,9 @@
 long
 DoubleForLoop::SumSquare(int n) {
   long sum = 0;
-  for (int i = 0; i < n; i += 1) {
-    for (int j = 0; j < n; j += 1) {
-      if (i == j) {
-        sum = sum + (long) (i * j);
-      }
-    }
-  }
+for (int i = 0; i < n; i++) {
+    sum += (long) (i * i);
+}
   return sum;
 }
 
@@ -28,11 +24,11 @@ DoubleForLoop::SumSquare(int n) {
 long
 DoubleForLoop::SumTriangle(int n) {
   long sum = 0;
-  for (int i = 0; i < n + 1; i += 1) {
-    for (int j = 0; j < i; j += 1) {
-      sum = sum + (long) j;
-    }
+ for (int i = 0; i < n + 1; i += 1) {
+  for (int j = 0; j < i; j += 1) {
+    sum = sum + (long) j;
   }
+}
   return sum;
 }
 
@@ -72,13 +68,11 @@ DoubleForLoop::CountPairs(std::vector<int> v) {
 int
 DoubleForLoop::CountDuplicates(std::vector<int> v0, std::vector<int> v1) {
   int count = 0;
-  for (int i = 0; i < (int) v0.size(); i += 1) {
-    for (int j = 0; j < (int) v1.size(); j += 1) {
-      if (i == j && v0[i] == v1[j]) {
-        count += 1;
-      }
+for (int i = 0, end = std::min(v0.size(), v1.size()); i < end; ++i) {
+    if (v0[i] == v1[i]) {
+        ++count;
     }
-  }
+}
   return count;
 }
 
@@ -92,10 +86,10 @@ int
 DoubleForLoop::SumMatrix(std::vector<std::vector<int>> matrix) {
   int n = (int) matrix.size();
   int sum = 0;
-  for (int i = 0; i < n; i += 1) {
-    for (int j = 0; j < n; j += 1) {
-      sum += matrix[j][i];
+for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < n; ++j) {
+        sum += matrix[j][i];
     }
-  }
+}
   return sum;
 }
