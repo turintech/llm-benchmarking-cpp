@@ -22,17 +22,15 @@ void
 Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
   int next_value = 0;
 
-  for (int i = 0; i < (int) v.size(); i += 1) {
+for (int i = 0, size = v.size(); i < size; ++i) {
     if (v[i] < pivot_value) {
-      std::swap(v[i], v[next_value]);
-      next_value += 1;
+      std::swap(v[i], v[next_value++]);
     }
   }
 
-  for (int i = next_value; i < (int) v.size(); i += 1) {
+for (int i = next_value, size = v.size(); i < size; ++i) {
     if (v[i] == pivot_value) {
-      std::swap(v[i], v[next_value]);
-      next_value += 1;
+      std::swap(v[i], v[next_value++]);
     }
   }
 }
