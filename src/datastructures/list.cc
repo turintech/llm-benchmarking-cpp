@@ -11,13 +11,12 @@ OpsList::Shuffle(std::list<int> &l) {
   std::list<int> ret;
   srand(0);
 
-  while (!tmp.empty()) {
+while (!tmp.empty()) {
     int r = rand() % tmp.size();
-    std::list<int>::iterator it = tmp.begin();
-    std::advance(it, r);
+    auto it = std::next(tmp.begin(), r);
     ret.push_back(*it);
     tmp.erase(it);
-  }
+}
 
   return ret;
 }
