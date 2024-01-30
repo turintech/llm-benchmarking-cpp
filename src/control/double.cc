@@ -6,15 +6,10 @@
  * @param n
  * @return the sum of all values squared from 0 to n
  */
-long
-DoubleForLoop::SumSquare(int n) {
+long DoubleForLoop::SumSquare(int n) {
   long sum = 0;
-  for (int i = 0; i < n; i += 1) {
-    for (int j = 0; j < n; j += 1) {
-      if (i == j) {
-        sum = sum + (long) (i * j);
-      }
-    }
+  for (int i = 0; i < n; i++) {
+    sum += (long) (i * i);
   }
   return sum;
 }
@@ -27,13 +22,7 @@ DoubleForLoop::SumSquare(int n) {
  */
 long
 DoubleForLoop::SumTriangle(int n) {
-  long sum = 0;
-  for (int i = 0; i < n + 1; i += 1) {
-    for (int j = 0; j < i; j += 1) {
-      sum = sum + (long) j;
-    }
-  }
-  return sum;
+  return (long)n * (n - 1) * (n + 1) / 6;
 }
 
 /**

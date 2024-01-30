@@ -59,7 +59,7 @@ LinkedList::Print() {
  *
  *  @param n Data to add to the new node
  */
-void
+ void
 LinkedList::AddNode(int n) {
   Node *current = head;
   while (current->next != nullptr) {
@@ -69,6 +69,7 @@ LinkedList::AddNode(int n) {
   Node *new_node = new Node;
   new_node->data = n;
   new_node->next = nullptr;
+
   current->next = new_node;
 }
 
@@ -92,8 +93,8 @@ LinkedList::SearchList(int n) {
 /** @brief Reverses the linked list
  *
  */
-void
-LinkedList::ReverseList() {
+
+ void LinkedList::ReverseList() {
   Node *current = head;
   Node *prev = nullptr;
   Node *next = nullptr;
@@ -116,7 +117,7 @@ LinkedList::ReverseList() {
 int
 LinkedList::At(int n) {
   Node *current = head;
-  for (int i = 0; i < n; i += 1) {
+  while(n--) {
     current = current->next;
   }
   return current->data;
