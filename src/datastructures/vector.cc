@@ -86,16 +86,11 @@ OpsVector::ReverseVector(std::vector<int> &v) {
  * @param n Number of elements to rotate by.
  * @return The rotated vector.
  */
-std::vector<int>
+ std::vector<int>
 OpsVector::RotateVector(std::vector<int> &v, int n) {
-  std::vector<int> ret;
-
-  for (int i = n; i < (int) v.size(); i += 1) {
-    ret.push_back(v[i]);
-  }
-  for (int i = 0; i < n; i += 1) {
-    ret.push_back(v[i]);
-  }
+  std::vector<int> ret(v.size());
+  std::copy(v.begin() + n, v.end(), ret.begin());
+  std::copy(v.begin(), v.begin() + n, ret.begin() + v.size() - n);
   return ret;
 }
 
