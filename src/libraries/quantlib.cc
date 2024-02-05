@@ -43,3 +43,40 @@ LibQuantLib::PriceOption(Real underlyingPrice, Real strike, Rate riskFreeRate, V
   europeanOption.setPricingEngine(mcengine);
   return europeanOption.NPV();
 }
+
+/** @brief Prices a fixed rate bond
+ *
+ * @param faceValue
+ * @param couponRate
+ * @param issueDate
+ * @param maturityDate
+ * @param frequency
+ * @param dayCounter
+ *
+ * Usage:
+     Real faceValue = 1000.0;
+     Real couponRate = 0.05;
+     Date issueDate(1, January, 2022);
+     Date maturityDate(1, January, 2032);
+     Frequency frequency = Semiannual;
+     DayCounter dayCounter = ActualActual(ActualActual::ISMA);
+ */
+Real
+LibQuantLib::FixedRateBond(Real faceValue, Real couponRate, Date issueDate, Date maturityDate, Frequency frequency,
+                           DayCounter dayCounter) {
+  // Create a schedule of coupon payment dates
+  Schedule schedule(issueDate, maturityDate, Period(frequency), TARGET(), ModifiedFollowing, ModifiedFollowing,
+                    DateGeneration::Backward, false);
+
+  // Calculate cash flows
+  std::vector<Rate> couponRates(schedule.size() - 1, couponRate);
+  std::vector<Real> notionals(schedule.size() - 1, faceValue);
+  notionals.back() += faceValue;   // Add face value to the last payment
+  Leg cashFlows = FixedRateLeg(schedule).withNotionals(notionals).withCouponRates(couponRates, dayCounter);
+
+  // Discount cash flows manually
+  Handle<YieldTermStructure> discountCurve(
+      boost::shared_ptr<YieldTermStructure>(new FlatForward(0, TARGET(), 0.05, ActualActual(ActualActual::ISMA))));
+
+  return CashFlows::npv(cashFlows, *discountCurve);
+}
