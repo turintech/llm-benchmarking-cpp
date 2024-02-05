@@ -7,7 +7,7 @@ SRC = src
 BUILD = build
 
 # Project Files
-SOURCES = $(wildcard $(SRC)/control/*.cc $(SRC)/strings/*.cc $(SRC)/algorithms/*.cc $(SRC)/datastructures/*.cc) $(SRC)/main.cc
+SOURCES = $(wildcard $(SRC)/control/*.cc $(SRC)/strings/*.cc $(SRC)/algorithms/*.cc $(SRC)/datastructures/*.cc $(SRC)/math/*.cc) $(SRC)/main.cc
 OBJECTS = $(SOURCES:$(SRC)/%.cc=$(BUILD)/%.o)
 EXECUTABLE = $(BUILD)/main
 

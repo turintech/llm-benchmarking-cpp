@@ -9,8 +9,7 @@ struct Node {
   Node *next;
 };
 
-class LinkedList {
-public:
+class LinkedList { public:
   LinkedList(int n);
   ~LinkedList();
   static LinkedList *RandomLinkedList(int n, int m);
