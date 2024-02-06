@@ -10,11 +10,7 @@ long
 DoubleForLoop::SumSquare(int n) {
   long sum = 0;
   for (int i = 0; i < n; i += 1) {
-    for (int j = 0; j < n; j += 1) {
-      if (i == j) {
-        sum = sum + (long) (i * j);
-      }
-    }
+    sum += (long) (i * i);
   }
   return sum;
 }
@@ -29,9 +25,7 @@ long
 DoubleForLoop::SumTriangle(int n) {
   long sum = 0;
   for (int i = 0; i < n + 1; i += 1) {
-    for (int j = 0; j < i; j += 1) {
-      sum = sum + (long) j;
-    }
+    sum += (i - 1) * i / 2;
   }
   return sum;
 }
@@ -72,11 +66,10 @@ DoubleForLoop::CountPairs(std::vector<int> v) {
 int
 DoubleForLoop::CountDuplicates(std::vector<int> v0, std::vector<int> v1) {
   int count = 0;
-  for (int i = 0; i < (int) v0.size(); i += 1) {
-    for (int j = 0; j < (int) v1.size(); j += 1) {
-      if (i == j && v0[i] == v1[j]) {
-        count += 1;
-      }
+  int minSize = std::min(v0.size(), v1.size());
+  for (int i = 0; i < minSize; i += 1) {
+    if (v0[i] == v1[i]) {
+      count += 1;
     }
   }
   return count;
