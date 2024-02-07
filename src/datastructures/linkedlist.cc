@@ -92,8 +92,8 @@ LinkedList::SearchList(int n) {
 /** @brief Reverses the linked list
  *
  */
-void
-LinkedList::ReverseList() {
+
+ void LinkedList::ReverseList() {
   Node *current = head;
   Node *prev = nullptr;
   Node *next = nullptr;
@@ -116,7 +116,7 @@ LinkedList::ReverseList() {
 int
 LinkedList::At(int n) {
   Node *current = head;
-  for (int i = 0; i < n; i += 1) {
+  while (n--) {
     current = current->next;
   }
   return current->data;
