@@ -79,12 +79,10 @@ LinkedList::AddNode(int n) {
  */
 bool
 LinkedList::SearchList(int n) {
-  Node *current = head;
-  while (current != nullptr) {
+  for (Node *current = head; current != nullptr; current = current->next) {
     if (current->data == n) {
       return true;
     }
-    current = current->next;
   }
   return false;
 }
@@ -92,8 +90,8 @@ LinkedList::SearchList(int n) {
 /** @brief Reverses the linked list
  *
  */
-void
-LinkedList::ReverseList() {
+
+ void LinkedList::ReverseList() {
   Node *current = head;
   Node *prev = nullptr;
   Node *next = nullptr;

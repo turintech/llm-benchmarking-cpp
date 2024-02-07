@@ -10,13 +10,10 @@
  */
 std::vector<int>
 GenVector::RandomVector(int n, int m) {
-  std::vector<int> ret = std::vector<int>(n);
-
-  srand(0);
+  std::vector<int> ret(n);
   for (int i = 0; i < n; i += 1) {
     ret[i] = rand() % m;
   }
-
   return ret;
 }
 

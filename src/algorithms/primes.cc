@@ -5,12 +5,24 @@
  *  @param n Number to check
  *  @return True if n is prime, false otherwise
  */
-bool
-Primes::IsPrime(int n) {
+
+ bool Primes::IsPrime(int n) {
   if (n <= 1) {
     return false;
   }
-  for (int i = 2; i < n; i += 1) {
+  for (int i = 2; i < n; i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
     if (n % i == 0) {
       return false;
     }
