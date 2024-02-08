@@ -32,25 +32,34 @@ MathVectorAlgebra::Cubic(int a, int b, int c, int d, std::vector<double> &x) {
  *
  * @return Pointer to array of y values (output)
  */
+
+#include <omp.h>
+
 std::vector<double>
 MathVectorAlgebra::Convolve(int offset, std::vector<double> &h, std::vector<double> &x) {
   int m = h.size();
   int n = x.size();
-  int sum_h = 0;
+  double sum_h = 0;
   std::vector<double> y = std::vector<double>(n);
+  
+  #pragma omp parallel for reduction(+:sum_h)
   for (int i = 0; i < m; i += 1) {
     sum_h += std::abs(h[i]);
   }
+  
   if (sum_h == 0) {
     sum_h = 1;
   }
+  
+  #pragma omp parallel for
   for (int i = 0; i < n; i += 1) {
-    y[i] = 0;
+    double temp = 0;
     for (int j = 0; j < m; j += 1) {
       if (i - offset + j >= 0 && i - offset + j < n) {
-        y[i] += h[j] * x[i - offset + j] / sum_h;
+        temp += h[j] * x[i - offset + j];
       }
     }
+    y[i] = temp / sum_h;
   }
   return y;
 }
