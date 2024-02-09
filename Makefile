@@ -1,3 +1,6 @@
+# Parallel Settings
+PARALLEL ?= 1
+
 # Compiler Settings
 CXX = g++
 CXXFLAGS = -std=c++2a -O3 -Wall
@@ -20,7 +23,7 @@ nocmake:
 	$(BUILD) $(EXECUTABLE)
 
 compile:
-	cmake --build $(BUILD)
+	cmake --build $(BUILD) -- -j$(PARALLEL)
 
 # Create Build
 $(BUILD):

@@ -22,14 +22,14 @@ LibQuantLib::PriceOption(Real underlyingPrice, Real strike, Rate riskFreeRate, V
   Option::Type type(Option::Call);
 
   // Constructing the European option
-  EuropeanExercise europeanExercise(maturity);
-  Handle<Quote> underlyingH(boost::shared_ptr<Quote>(new SimpleQuote(underlyingPrice)));
+  ext::shared_ptr<EuropeanExercise> europeanExercise(new EuropeanExercise(maturity));
+  Handle<Quote> underlyingH(ext::shared_ptr<Quote>(new SimpleQuote(underlyingPrice)));
   Handle<YieldTermStructure> flatTermStructure(
-      boost::shared_ptr<YieldTermStructure>(new FlatForward(0, TARGET(), riskFreeRate, Actual365Fixed())));
+      ext::shared_ptr<YieldTermStructure>(new FlatForward(0, TARGET(), riskFreeRate, Actual365Fixed())));
   Handle<BlackVolTermStructure> flatVolTS(
-      boost::shared_ptr<BlackVolTermStructure>(new BlackConstantVol(0, TARGET(), volatility, Actual365Fixed())));
-  boost::shared_ptr<StrikedTypePayoff> payoff(new PlainVanillaPayoff(type, strike));
-  boost::shared_ptr<BlackScholesMertonProcess> bsmProcess(
+      ext::shared_ptr<BlackVolTermStructure>(new BlackConstantVol(0, TARGET(), volatility, Actual365Fixed())));
+  ext::shared_ptr<StrikedTypePayoff> payoff(new PlainVanillaPayoff(type, strike));
+  ext::shared_ptr<BlackScholesMertonProcess> bsmProcess(
       new BlackScholesMertonProcess(underlyingH, flatTermStructure, flatTermStructure, flatVolTS));
 
   // Create a European option
@@ -75,8 +75,10 @@ LibQuantLib::FixedRateBond(Real faceValue, Real couponRate, Date issueDate, Date
   Leg cashFlows = FixedRateLeg(schedule).withNotionals(notionals).withCouponRates(couponRates, dayCounter);
 
   // Discount cash flows manually
-  Handle<YieldTermStructure> discountCurve(
-      boost::shared_ptr<YieldTermStructure>(new FlatForward(0, TARGET(), 0.05, ActualActual(ActualActual::ISMA))));
+  ext::shared_ptr<YieldTermStructure> discountCurve(
+      ext::shared_ptr<YieldTermStructure>(new FlatForward(0, TARGET(), 0.05, ActualActual(ActualActual::ISMA))));
 
-  return CashFlows::npv(cashFlows, *discountCurve);
+  Date valuationDate = Settings::instance().evaluationDate();
+
+  return CashFlows::npv(cashFlows, *discountCurve, true);
 }

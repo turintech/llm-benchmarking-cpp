@@ -4,6 +4,7 @@ add_subdirectory(algorithms)
 add_subdirectory(control)
 add_subdirectory(strings)
 add_subdirectory(math)
+add_subdirectory(libraries)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -15,4 +16,9 @@ target_link_libraries(main
   control_lib 
   strings_lib
   math_lib
+)
+
+add_executable(ql ql.cc)
+target_link_libraries(ql
+  ql_library lib_lib
 )
