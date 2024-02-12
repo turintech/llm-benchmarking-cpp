@@ -18,10 +18,12 @@ add_executable(tests
   datastructures/test_linkedlist.cc
   datastructures/test_list.cc
   math/test_vectoralgebra.cc
+  libraries/test_quantlib.cc
 )
 target_link_libraries(tests 
   PRIVATE 
     Catch2::Catch2WithMain 
+    ql_library
   PUBLIC 
     generator_lib
     datastructures_lib 
@@ -29,4 +31,5 @@ target_link_libraries(tests
     control_lib 
     strings_lib
     math_lib
+    lib_lib
 )
