@@ -24,10 +24,11 @@ OpsVector::PrintVector(std::vector<double> &v) {
  */
 std::vector<int>
 OpsVector::ModifyVector(std::vector<int> &v) {
-  for (int i = 0; i < (int) v.size(); i += 1) {
-    v.at(i) += 1;
+  std::vector<int> v_copy(v);
+  for (int i = 0; i < (int) v_copy.size(); i += 1) {
+    v_copy.at(i) += 1;
   }
-  return v;
+  return v_copy;
 }
 
 /**
