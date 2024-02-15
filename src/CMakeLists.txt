@@ -18,7 +18,9 @@ target_link_libraries(main
   math_lib
 )
 
-add_executable(ql ql.cc)
-target_link_libraries(ql
-  ql_library lib_lib
-)
+if(WITH_QUANTLIB)
+  add_executable(ql ql.cc)
+  target_link_libraries(ql
+    ql_library lib_lib
+  )
+endif()

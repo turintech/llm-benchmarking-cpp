@@ -1,5 +1,6 @@
 # Parallel Settings
 PARALLEL ?= 1
+PRESET ?= intel
 
 # Compiler Settings
 CXX = g++
@@ -16,6 +17,7 @@ EXECUTABLE = $(BUILD)/main
 
 # Default (CMake)
 all: 
+	cmake --preset $(PRESET)
 	cmake -S . -B $(BUILD)
 
 # No CMake
@@ -23,6 +25,7 @@ nocmake:
 	$(BUILD) $(EXECUTABLE)
 
 compile:
+	cmake --preset $(PRESET)
 	cmake --build $(BUILD) -- -j$(PARALLEL)
 
 # Create Build

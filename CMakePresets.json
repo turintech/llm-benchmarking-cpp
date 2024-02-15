@@ -1,0 +1,46 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 15,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "intel",
+      "displayName": "Intel (icpx)",
+      "description": "Intel build pipeline",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "icpx",
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_QUANTLIB": "OFF"
+      }
+    },
+    {
+      "name": "gnu",
+      "displayName": "Gnu (G++)",
+      "description": "Gnu build pipeline",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_QUANTLIB": "OFF"
+      }
+    },
+    {
+      "name": "quantlib",
+      "displayName": "QuantLib (g++)",
+      "description": "Quantlib build pipeline",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_QUANTLIB": "ON"
+      }
+    }
+  ]
+}
