@@ -13,9 +13,10 @@
       "generator": "Ninja",
       "binaryDir": "build",
       "cacheVariables": {
+        "CMAKE_C_COMPILER": "icx",
         "CMAKE_CXX_COMPILER": "icpx",
         "CMAKE_BUILD_TYPE": "Release",
-        "WITH_QUANTLIB": "OFF"
+        "WITH_SYCL": "ON"
       }
     },
     {
@@ -25,9 +26,9 @@
       "generator": "Ninja",
       "binaryDir": "build",
       "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++",
-        "CMAKE_BUILD_TYPE": "Release",
-        "WITH_QUANTLIB": "OFF"
+        "CMAKE_BUILD_TYPE": "Release"
       }
     },
     {
@@ -37,6 +38,7 @@
       "generator": "Ninja",
       "binaryDir": "build",
       "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++",
         "CMAKE_BUILD_TYPE": "Release",
         "WITH_QUANTLIB": "ON"

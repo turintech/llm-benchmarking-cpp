@@ -5,6 +5,7 @@ add_subdirectory(control)
 add_subdirectory(strings)
 add_subdirectory(math)
 add_subdirectory(libraries)
+add_subdirectory(testhelpers)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -16,6 +17,9 @@ target_link_libraries(main
   control_lib 
   strings_lib
   math_lib
+)
+target_link_libraries(math_lib
+  datastructures_lib
 )
 
 if(WITH_QUANTLIB)

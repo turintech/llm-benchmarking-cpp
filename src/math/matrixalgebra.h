@@ -5,10 +5,16 @@
 
 namespace MathMatrixAlgebra {
 
-std::vector<std::vector<double>> MatrixMultiply(std::vector<std::vector<double>> &a,
-                                                std::vector<std::vector<double>> &b);
-std::vector<std::vector<double>> RotatePoints(std::vector<std::vector<double>> &points,
-                                              std::vector<std::vector<double>> &rotmat);
+std::vector<double> MatrixMultiply(const std::vector<std::vector<double>> &a, const std::vector<double> &x);
+std::vector<std::vector<double>> MatrixMultiply(const std::vector<std::vector<double>> &a,
+                                                const std::vector<std::vector<double>> &b);
+std::vector<std::vector<double>> RotatePoints(const std::vector<std::vector<double>> &points,
+                                              const std::vector<std::vector<double>> &rotmat);
+std::vector<double> LinearSolver(const std::vector<std::vector<double>> &equations, const std::vector<double> &inputs);
+void LuDecompose(const std::vector<std::vector<double>> &A, std::vector<std::vector<double>> &L,
+                 std::vector<std::vector<double>> &U);
+std::vector<double> ForwardSubstitution(const std::vector<std::vector<double>> &L, const std::vector<double> &b);
+std::vector<double> BackwardSubstitution(const std::vector<std::vector<double>> &U, const std::vector<double> &y);
 
 };   // namespace MathMatrixAlgebra
 

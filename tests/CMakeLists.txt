@@ -18,6 +18,7 @@ add_executable(tests
   datastructures/test_linkedlist.cc
   datastructures/test_list.cc
   math/test_vectoralgebra.cc
+  math/test_matrixalgebra.cc
 )
 if(WITH_QUANTLIB)
   add_executable(
@@ -36,6 +37,7 @@ target_link_libraries(tests
     control_lib 
     strings_lib
     math_lib
+    test_lib
 )
 if(WITH_QUANTLIB)
   target_link_libraries(

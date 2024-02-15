@@ -1,19 +1,41 @@
 #include "vector.h"
 
+#include <iostream>
+
 void
-OpsVector::PrintVector(std::vector<int> &v) {
+OpsVector::PrintVector(const std::vector<int> &v) {
+  std::cout << "[";
   for (int i = 0; i < (int) v.size(); i += 1) {
     std::cout << v[i] << " ";
+    if (i < (int) v.size() - 1) {
+      std::cout << ", ";
+    }
   }
+  std::cout << std::endl;
+  std::cout << "]";
+}
+
+void
+OpsVector::PrintVector(const std::vector<double> &v) {
+  std::cout << "[";
+  for (int i = 0; i < (int) v.size(); i += 1) {
+    std::cout << v[i];
+    if (i < (int) v.size() - 1) {
+      std::cout << ", ";
+    }
+  }
+  std::cout << "]";
   std::cout << std::endl;
 }
 
 void
-OpsVector::PrintVector(std::vector<double> &v) {
-  for (int i = 0; i < (int) v.size(); i += 1) {
-    std::cout << v[i] << " ";
+OpsVector::PrintMatrix(const std::vector<std::vector<double>> &m) {
+  std::cout << "[" << std::endl;
+  for (int i = 0; i < (int) m.size(); i += 1) {
+    std::cout << "  ";
+    PrintVector(m[i]);
   }
-  std::cout << std::endl;
+  std::cout << "]" << std::endl;
 }
 
 /**

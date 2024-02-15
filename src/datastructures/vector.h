@@ -1,14 +1,13 @@
 #ifndef __DATASTRUCTURES_VECTOR_H__
 #define __DATASTRUCTURES_VECTOR_H__
 
-#include <iostream>
-#include <random>
 #include <vector>
 
 namespace OpsVector {
 
-void PrintVector(std::vector<int> &v);
-void PrintVector(std::vector<double> &v);
+void PrintVector(const std::vector<int> &v);
+void PrintVector(const std::vector<double> &v);
+void PrintMatrix(const std::vector<std::vector<double>> &m);
 std::vector<int> ModifyVector(std::vector<int> &v);
 std::vector<int> SearchVector(std::vector<int> &v, int n);
 std::vector<int> SortVector(std::vector<int> &v);
