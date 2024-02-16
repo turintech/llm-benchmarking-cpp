@@ -52,12 +52,12 @@ GenVector::RandomSquareMatrix(int n, int m) {
   std::vector<std::vector<int>> ret = std::vector<std::vector<int>>(n);
 
   srand(0);
-  for (int i = 0; i < n; i += 1) {
+for (int i = 0; i < n; ++i) {
     ret[i] = std::vector<int>(n);
-    for (int j = 0; j < n; j += 1) {
-      ret[i][j] = rand() % m;
+    for (int j = 0; j < n; ++j) {
+        ret[i][j] = rand() % m;
     }
-  }
+}
 
   return ret;
 }
