@@ -6,13 +6,16 @@
  * @param n the upper bound (non-inclusive)
  * @return the sum of all integer values from 0 to n
  */
-int
-SingleForLoop::SumRange(int n) {
+#include <omp.h>
+
+int SingleForLoop::SumRange(int n) {
   int array[n];
   int sum = 0;
+  #pragma omp parallel for
   for (int i = 0; i < n; i += 1) {
     array[i] = i;
   }
+  #pragma omp parallel for reduction(+:sum)
   for (int i = 0; i < n; i += 1) {
     sum += array[i];
   }
