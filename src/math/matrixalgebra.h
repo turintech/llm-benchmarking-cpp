@@ -20,6 +20,8 @@ std::vector<double> LinearSolver(const std::vector<double> &equations, const std
 void LuDecompose(const std::vector<double> &A, std::vector<double> &L, std::vector<double> &U, int nI);
 std::vector<double> ForwardSubstitution(const std::vector<double> &L, const std::vector<double> &b, int nI);
 std::vector<double> BackwardSubstitution(const std::vector<double> &U, const std::vector<double> &y, int nI);
+std::vector<double> Convolve2D(const std::vector<double> &a, int nAI, int nAJ, const std::vector<double> &k, int nKI,
+                               int nKJ, int padding, int stride);
 
 };   // namespace MathMatrixAlgebra
 

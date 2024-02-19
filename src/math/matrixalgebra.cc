@@ -209,3 +209,45 @@ MathMatrixAlgebra::BackwardSubstitution(const std::vector<double> &U, const std:
 
   return x;
 }
+
+/** @brief Convolution in 2D
+ *
+ * @param a, the input vector. Shape (nAI, nAJ).
+ * @param k, the kernel. Shape (nKI, nKJ).
+ * @param padding
+ * @param stride
+ *
+ * @return b, the output vector. Shape (nBI, nBJ)
+ */
+std::vector<double>
+MathMatrixAlgebra::Convolve2D(const std::vector<double> &a, int nAI, int nAJ, const std::vector<double> &k, int nKI,
+                              int nKJ, int padding, int stride) {
+  if (nAI * nAJ != a.size()) {
+    throw std::invalid_argument("invalid dimensions for `a`");
+  }
+  if (nKI * nKJ != k.size()) {
+    throw std::invalid_argument("invalid dimensions for `k`");
+  }
+
+  int nBI = (nAI - nKI + 2 * padding) / stride + 1;
+  int nBJ = (nAJ - nKJ + 2 * padding) / stride + 1;
+  std::vector<double> b(nBI * nBJ, 0.0);
+
+  for (int y = 0; y < nBI; ++y) {
+    for (int x = 0; x < nBJ; ++x) {
+      double sum = 0.0;
+      for (int ky = 0; ky < nKI; ++ky) {
+        for (int kx = 0; kx < nKJ; ++kx) {
+          int iy = y * stride + ky - padding;
+          int ix = x * stride + kx - padding;
+          if (iy >= 0 && iy < nAI && ix >= 0 && ix < nAJ) {
+            sum += a[iy * nAJ + ix] * k[ky * nKJ + kx];
+          }
+        }
+      }
+      b[y * nBJ + x] = sum;
+    }
+  }
+
+  return b;
+}
