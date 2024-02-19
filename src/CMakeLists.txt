@@ -10,6 +10,20 @@ add_subdirectory(testhelpers)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(main main.cc)
+
+if(WITH_SYCL)
+  target_compile_options(main
+    PUBLIC
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
+  )
+  target_link_options(main
+    PUBLIC
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
+  )
+endif()
+
 target_link_libraries(main 
   generator_lib 
   datastructures_lib 
@@ -17,9 +31,6 @@ target_link_libraries(main
   control_lib 
   strings_lib
   math_lib
-)
-target_link_libraries(math_lib
-  datastructures_lib
 )
 
 if(WITH_QUANTLIB)

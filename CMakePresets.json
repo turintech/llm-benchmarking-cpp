@@ -7,6 +7,20 @@
   },
   "configurePresets": [
     {
+      "name": "oneapi",
+      "displayName": "Intel (icpx) + sycl",
+      "description": "Intel build pipeline (with GPU support)",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "icx",
+        "CMAKE_CXX_COMPILER": "icpx",
+        "CMAKE_CXX_FLAGS": "-O3",
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_SYCL": "ON"
+      }
+    },
+    {
       "name": "intel",
       "displayName": "Intel (icpx)",
       "description": "Intel build pipeline",
@@ -15,8 +29,8 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER": "icx",
         "CMAKE_CXX_COMPILER": "icpx",
-        "CMAKE_BUILD_TYPE": "Release",
-        "WITH_SYCL": "ON"
+        "CMAKE_CXX_FLAGS": "-O3",
+        "CMAKE_BUILD_TYPE": "Release"
       }
     },
     {

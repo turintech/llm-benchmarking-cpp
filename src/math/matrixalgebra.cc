@@ -3,26 +3,29 @@
 
 /** @brief Multiply a matrix with a vector
  *
- * @param a Matrix shape(adim0, adim1)
- * @param x Vector shape(xdim)
+ * @param a Matrix shape(nAI, nAJ)
+ * @param x Vector shape(nXI)
  *
- * @return Product of a and b, shape(adim0)
+ * @return Product of a and b, shape(nAI)
  */
 std::vector<double>
-MathMatrixAlgebra::MatrixMultiply(const std::vector<std::vector<double>> &a, const std::vector<double> &x) {
-  int adim0 = a.size();
-  int adim1 = a[0].size();
-  int xdim = x.size();
+MathMatrixAlgebra::MatrixMultiply(const std::vector<double> &a, int nAI, int nAJ, const std::vector<double> &x,
+                                  int nXI) {
+  std::vector<double> result(nAI, 0.0);
 
-  std::vector<double> result(adim0, 0.0);
-
-  if (adim1 != xdim) {
+  if (nXI != x.size()) {
+    throw std::invalid_argument("Vector dimensions don't match for `x`");
+  }
+  if (nAI * nAJ != a.size()) {
+    throw std::invalid_argument("Matrix dimensions don't match for `a`");
+  }
+  if (nAJ != nXI) {
     throw std::invalid_argument("Matrix dimensions don't match for multiplication");
   }
 
-  for (int i = 0; i < adim0; i++) {
-    for (int j = 0; j < xdim; j++) {
-      result[i] += a[i][j] * x[j];
+  for (int i = 0; i < nAI; i++) {
+    for (int j = 0; j < nXI; j++) {
+      result[i] += a[i * nAJ + j] * x[j];
     }
   }
 
@@ -31,29 +34,30 @@ MathMatrixAlgebra::MatrixMultiply(const std::vector<std::vector<double>> &a, con
 
 /** @brief Multiply two matrices
  *
- * @param a First matrix shape(adim0, adim1)
- * @param b Second matrix shape(bdim0, bdim1)
+ * @param a First matrix shape(nAI, nAJ)
+ * @param b Second matrix shape(nBI, nBJ)
  *
- * @return Product of a and b, shape(adim0, bdim1)
+ * @return Product of a and b, shape(nAI, nBJ)
  */
-std::vector<std::vector<double>>
-MathMatrixAlgebra::MatrixMultiply(const std::vector<std::vector<double>> &a,
-                                  const std::vector<std::vector<double>> &b) {
-  int adim0 = a.size();
-  int adim1 = a[0].size();
-  int bdim0 = b.size();
-  int bdim1 = b[0].size();
+std::vector<double>
+MathMatrixAlgebra::MatrixMultiply(const std::vector<double> &a, int nAI, int nAJ, const std::vector<double> &b, int nBI,
+                                  int nBJ) {
+  std::vector<double> result(nAI * nBJ, 0.0);
 
-  std::vector<std::vector<double>> result(adim0, std::vector<double>(bdim1, 0.0));
-
-  if (adim1 != bdim0) {
+  if (nAI * nAJ != a.size()) {
+    throw std::invalid_argument("Matrix dimensions don't match for `a`");
+  }
+  if (nBI * nBJ != b.size()) {
+    throw std::invalid_argument("Matrix dimensions don't match for `b`");
+  }
+  if (nAJ != nBI) {
     throw std::invalid_argument("Matrix dimensions don't match for multiplication");
   }
 
-  for (int i = 0; i < adim0; i++) {
-    for (int j = 0; j < bdim1; j++) {
-      for (int k = 0; k < adim1; k++) {
-        result[i][j] += a[i][k] * b[k][j];
+  for (int i = 0; i < nAI; i++) {
+    for (int j = 0; j < nBJ; j++) {
+      for (int k = 0; k < nAJ; k++) {
+        result[i * nBJ + j] += a[i * nAJ + k] * b[k * nBJ + j];
       }
     }
   }
@@ -63,127 +67,144 @@ MathMatrixAlgebra::MatrixMultiply(const std::vector<std::vector<double>> &a,
 
 /** @brief Rotates a series of points by a matrix
  *
- * @param a Points shape(npoints, ndim)
- * @param b Rotation matrix shape(ndim, ndim)
+ * @param a Points shape(nPoints, nDim)
+ * @param b Rotation matrix shape(nDim, nDim)
  *
- * @return Updated Point Locations shape(ndim, npoints)
+ * @return Updated Point Locations shape(nDim, nPoints)
  */
-std::vector<std::vector<double>>
-MathMatrixAlgebra::RotatePoints(const std::vector<std::vector<double>> &points,
-                                const std::vector<std::vector<double>> &rotmat) {
-  int npoints = points.size();
-  int ndim = points[0].size();
-
-  if ((ndim != rotmat.size()) || (ndim != rotmat[0].size())) {
-    throw std::invalid_argument("Rotation matrix dimensions don't match to points");
+std::vector<double>
+MathMatrixAlgebra::RotatePoints(const std::vector<double> &points, int nPoints, int nDim,
+                                const std::vector<double> &rotmat) {
+  if (nPoints * nDim != points.size()) {
+    throw std::invalid_argument("Matrix dimensions don't match for `points`");
+  }
+  if (nDim * nDim != rotmat.size()) {
+    throw std::invalid_argument("Matrix dimensions don't match for `rotmat`");
   }
 
-  std::vector<std::vector<double>> result(npoints, std::vector<double>(ndim, 0.0));
+  std::vector<double> result(nPoints * nDim, 0.0);
+  std::vector<double> tmpPoint(nDim, 0.0);
 
-  for (int i = 0; i < npoints; i++) {
-    result[i] = MatrixMultiply(rotmat, points[i]);
+  for (int i = 0; i < nPoints; i++) {
+    for (int j = 0; j < nDim; j++) {
+      tmpPoint[j] = points[i * nDim + j];
+    }
+
+    std::vector<double> rotPoint = MatrixMultiply(rotmat, nDim, nDim, tmpPoint, nDim);
+
+    for (int j = 0; j < nDim; j++) {
+      result[i * nDim + j] = rotPoint[j];
+    }
   }
 
   return result;
 }
 
+/** @brief Solves a set of linear equations
+ *
+ * @NOTE this doesn't handle many of the edge cases
+ * @param equations, the equations as a flattened vector, shape (nI, nI)
+ * @param inputs, the input values (solutions to the linear equations), shape (nI)
+ * @param nI, the number of equations
+ *
+ * @return x, the unknowns of the linear equations
+ */
 std::vector<double>
-MathMatrixAlgebra::LinearSolver(const std::vector<std::vector<double>> &equations, const std::vector<double> &inputs) {
-  std::vector<std::vector<double>> L;
-  std::vector<std::vector<double>> U;
+MathMatrixAlgebra::LinearSolver(const std::vector<double> &equations, const std::vector<double> &inputs, int nI) {
+  std::vector<double> L;
+  std::vector<double> U;
 
-  LuDecompose(equations, L, U);
-  std::vector<double> y = ForwardSubstitution(L, inputs);
-  std::vector<double> x = BackwardSubstitution(U, y);
+  LuDecompose(equations, L, U, nI);
+  std::vector<double> y = ForwardSubstitution(L, inputs, nI);
+  std::vector<double> x = BackwardSubstitution(U, y, nI);
   return x;
 }
 
+/** @brief LU Decomposition algorithm without pivoting (doolittle)
+ *
+ * @param A input matrix
+ * @param L output lower triangular (to be initialised in this function)
+ * @param U output upper triangular (to be initialised in this function)
+ */
 void
-MathMatrixAlgebra::LuDecompose(const std::vector<std::vector<double>> &A, std::vector<std::vector<double>> &L,
-                               std::vector<std::vector<double>> &U) {
-  if (A.size() != A[0].size()) {
-    throw std::invalid_argument("A needs to be square");
+MathMatrixAlgebra::LuDecompose(const std::vector<double> &A, std::vector<double> &L, std::vector<double> &U, int nI) {
+  if (nI * nI != A.size()) {
+    throw std::invalid_argument("invalid dimensions for `A`");
   }
 
-  int n = A.size();
+  L = std::vector<double>(nI * nI, 0.0);
+  U = std::vector<double>(nI * nI, 0.0);
 
-  L = std::vector<std::vector<double>>(n, std::vector<double>(n, 0.0));
-  U = std::vector<std::vector<double>>(n, std::vector<double>(n, 0.0));
-
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < nI; i++) {
     // Upper Triangular
-    for (int k = i; k < n; k++) {
+    for (int k = i; k < nI; k++) {
       double sum = 0.0;
       for (int j = 0; j < i; j++) {
-        sum += L[i][j] * U[j][k];
+        sum += L[i * nI + j] * U[j * nI + k];
       }
-      U[i][k] = A[i][k] - sum;
+      U[i * nI + k] = A[i * nI + k] - sum;
     }
 
     // Lower Triangular
-    for (int k = i; k < n; k++) {
+    for (int k = i; k < nI; k++) {
       if (i == k)
-        L[i][i] = 1.0;
+        L[i * nI + i] = 1.0;
       else {
         double sum = 0.0;
         for (int j = 0; j < i; j++) {
-          sum += L[k][j] * U[j][i];
+          sum += L[k * nI + j] * U[j * nI + i];
         }
-        L[k][i] = (A[k][i] - sum) / U[i][i];
+        L[k * nI + i] = (A[k * nI + i] - sum) / U[i * nI + i];
       }
     }
   }
 }
 
 std::vector<double>
-MathMatrixAlgebra::ForwardSubstitution(const std::vector<std::vector<double>> &L, const std::vector<double> &b) {
-  if (L.size() != L[0].size()) {
-    throw std::invalid_argument("L needs to be square");
+MathMatrixAlgebra::ForwardSubstitution(const std::vector<double> &L, const std::vector<double> &b, int nI) {
+  if (nI * nI != L.size()) {
+    throw std::invalid_argument("invalid dimensions for `L`");
   }
-  if (L.size() != b.size()) {
-    throw std::invalid_argument("L dimensions don't match to b");
+  if (nI != b.size()) {
+    throw std::invalid_argument("invalid dimension for `b`");
   }
 
-  int n = L.size();
+  std::vector<double> y(nI, 0.0);
 
-  std::vector<double> y(n, 0.0);
-
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < nI; i++) {
     y[i] = b[i];
     for (int j = 0; j < i; j++) {
-      y[i] = y[i] - L[i][j] * y[j];
+      y[i] = y[i] - L[i * nI + j] * y[j];
     }
-    if (L[i][i] == 0) {
+    if (L[i * nI + i] == 0) {
       throw std::invalid_argument("L needs to be non-singular");
     }
-    y[i] = y[i] / L[i][i];
+    y[i] = y[i] / L[i * nI + i];
   }
 
   return y;
 }
 
 std::vector<double>
-MathMatrixAlgebra::BackwardSubstitution(const std::vector<std::vector<double>> &U, const std::vector<double> &y) {
-  if (U.size() != U[0].size()) {
-    throw std::invalid_argument("U needs to be square");
+MathMatrixAlgebra::BackwardSubstitution(const std::vector<double> &U, const std::vector<double> &y, int nI) {
+  if (nI * nI != U.size()) {
+    throw std::invalid_argument("invalid dimensions for `U`");
   }
-  if (U.size() != y.size()) {
-    throw std::invalid_argument("U dimensions don't match to y");
+  if (nI != y.size()) {
+    throw std::invalid_argument("invalid dimension for `y`");
   }
 
-  int n = U.size();
+  std::vector<double> x(nI, 0.0);
 
-  std::vector<double> x(n, 0.0);
-
-  for (int i = n - 1; i >= 0; i--) {
+  for (int i = nI - 1; i >= 0; i--) {
     x[i] = y[i];
-    for (int j = i + 1; j < n; j++) {
-      x[i] = x[i] - U[i][j] * x[j];
+    for (int j = i + 1; j < nI; j++) {
+      x[i] = x[i] - U[i * nI + j] * x[j];
     }
-    if (U[i][i] == 0) {
+    if (U[i * nI + i] == 0) {
       throw std::invalid_argument("L needs to be non-singular");
     }
-    x[i] = x[i] / U[i][i];
+    x[i] = x[i] / U[i * nI + i];
   }
 
   return x;

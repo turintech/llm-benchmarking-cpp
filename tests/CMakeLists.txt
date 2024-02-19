@@ -19,11 +19,24 @@ add_executable(tests
   datastructures/test_list.cc
   math/test_vectoralgebra.cc
   math/test_matrixalgebra.cc
+  math/test_simulation.cc
 )
 if(WITH_QUANTLIB)
   add_executable(
     tests
     libraries/test_quantlib.cc
+  )
+endif()
+if(WITH_SYCL)
+  target_compile_options(tests
+    PUBLIC
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
+  )
+  target_link_options(tests
+    PUBLIC
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
   )
 endif()
 

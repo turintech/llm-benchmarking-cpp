@@ -1,7 +1,15 @@
 add_library(math_lib
   vectoralgebra.cc
   matrixalgebra.cc
+  simulation.cc
 )
 target_link_libraries(math_lib
   datastructures_lib
 )
+if(WITH_SYCL)
+  target_compile_options(math_lib
+    PRIVATE
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
+)
+endif()

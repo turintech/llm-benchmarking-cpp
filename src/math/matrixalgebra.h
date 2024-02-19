@@ -3,18 +3,23 @@
 
 #include <vector>
 
+// Convenience includes for artemis
+#if __has_include(<CL/sycl.hpp>)
+#include <CL/sycl.hpp>
+#endif   // __has_include
+
 namespace MathMatrixAlgebra {
 
-std::vector<double> MatrixMultiply(const std::vector<std::vector<double>> &a, const std::vector<double> &x);
-std::vector<std::vector<double>> MatrixMultiply(const std::vector<std::vector<double>> &a,
-                                                const std::vector<std::vector<double>> &b);
-std::vector<std::vector<double>> RotatePoints(const std::vector<std::vector<double>> &points,
-                                              const std::vector<std::vector<double>> &rotmat);
-std::vector<double> LinearSolver(const std::vector<std::vector<double>> &equations, const std::vector<double> &inputs);
-void LuDecompose(const std::vector<std::vector<double>> &A, std::vector<std::vector<double>> &L,
-                 std::vector<std::vector<double>> &U);
-std::vector<double> ForwardSubstitution(const std::vector<std::vector<double>> &L, const std::vector<double> &b);
-std::vector<double> BackwardSubstitution(const std::vector<std::vector<double>> &U, const std::vector<double> &y);
+std::vector<double> MatrixMultiply(const std::vector<double> &a, int nAI, int nAJ, const std::vector<double> &x,
+                                   int nXI);
+std::vector<double> MatrixMultiply(const std::vector<double> &a, int nAI, int nAJ, const std::vector<double> &b,
+                                   int nBI, int nBJ);
+std::vector<double> RotatePoints(const std::vector<double> &points, int nPoints, int nDim,
+                                 const std::vector<double> &rotmat);
+std::vector<double> LinearSolver(const std::vector<double> &equations, const std::vector<double> &inputs, int nI);
+void LuDecompose(const std::vector<double> &A, std::vector<double> &L, std::vector<double> &U, int nI);
+std::vector<double> ForwardSubstitution(const std::vector<double> &L, const std::vector<double> &b, int nI);
+std::vector<double> BackwardSubstitution(const std::vector<double> &U, const std::vector<double> &y, int nI);
 
 };   // namespace MathMatrixAlgebra
 

@@ -4,13 +4,9 @@
 #include <vector>
 
 // Convenience includes for artemis
-#ifdef __INTEL_COMPILER
-
+#if __has_include(<CL/sycl.hpp>)
 #include <CL/sycl.hpp>
-#include <oneapi/dpl/algorithm>
-#include <oneapi/dpl/execution>
-
-#endif   // __INTEL_COMPILER
+#endif   // __has_include
 
 namespace MathVectorAlgebra {
 
