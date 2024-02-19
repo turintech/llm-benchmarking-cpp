@@ -37,14 +37,20 @@ OpsVector::ModifyVector(std::vector<int> &v) {
  * @param n Number to search for.
  * @return A vector of indices where n was found.
  */
+#include <vector>
+#include <algorithm>
+#include <execution>
+
 std::vector<int>
 OpsVector::SearchVector(std::vector<int> &v, int n) {
   std::vector<int> ret;
 
-  for (int i = 0; i < (int) v.size(); i += 1) {
-    if (v[i] == n) {
-      ret.push_back(i);
-    }
+  auto begin = v.begin();
+  auto end = v.end();
+  auto result = std::find(begin, end, n);
+  while (result != end) {
+    ret.push_back(std::distance(begin, result));
+    result = std::find(std::next(result), end, n);
   }
   return ret;
 }
@@ -77,13 +83,17 @@ OpsVector::SortVector(std::vector<int> &v) {
  * @param v Vector to reverse.
  * @return The reversed vector.
  */
-std::vector<int>
-OpsVector::ReverseVector(std::vector<int> &v) {
-  std::vector<int> ret;
+#include <algorithm>
+#include <vector>
 
-  for (int i = (int) v.size() - 1; i >= 0; i -= 1) {
-    ret.push_back(v[i]);
+std::vector<int> OpsVector::ReverseVector(std::vector<int> &v) {
+  std::vector<int> ret(v.size());
+  
+  #pragma omp parallel for
+  for (int i = 0; i < v.size(); ++i) {
+    ret[i] = v[v.size() - 1 - i];
   }
+  
   return ret;
 }
 

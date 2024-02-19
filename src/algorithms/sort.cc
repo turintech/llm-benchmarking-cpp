@@ -18,21 +18,28 @@ Sort::SortVector(std::vector<int> &v) {
  * @param v the vector to partition
  * @param pivot_value value of the pivot
  */
-void
-Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
+void Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
   int next_value = 0;
 
+  #pragma omp parallel for
   for (int i = 0; i < (int) v.size(); i += 1) {
     if (v[i] < pivot_value) {
-      std::swap(v[i], v[next_value]);
-      next_value += 1;
+      #pragma omp critical
+      {
+        std::swap(v[i], v[next_value]);
+        next_value += 1;
+      }
     }
   }
 
+  #pragma omp parallel for
   for (int i = next_value; i < (int) v.size(); i += 1) {
     if (v[i] == pivot_value) {
-      std::swap(v[i], v[next_value]);
-      next_value += 1;
+      #pragma omp critical
+      {
+        std::swap(v[i], v[next_value]);
+        next_value += 1;
+      }
     }
   }
 }
