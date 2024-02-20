@@ -35,8 +35,8 @@ LibQuantLib::PriceOption(Real underlyingPrice, Real strike, Rate riskFreeRate, V
   // Create a European option
   VanillaOption europeanOption(payoff, europeanExercise);
 
-  // Pricing using Monte Carlo with low number of paths (suboptimal)
-  Size numPaths = 100;   // Very low number of paths
+  // Pricing using Monte Carlo
+  Size numPaths = 100;
   boost::shared_ptr<PricingEngine> mcengine;
   mcengine = MakeMCEuropeanEngine<PseudoRandom>(bsmProcess).withSteps(10).withAbsoluteTolerance(0.02).withSeed(42);
 
