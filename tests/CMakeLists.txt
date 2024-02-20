@@ -22,9 +22,9 @@ add_executable(tests
   math/test_simulation.cc
 )
 if(WITH_QUANTLIB)
-  add_executable(
-    tests
-    libraries/test_quantlib.cc
+  target_sources(tests
+    PRIVATE
+      libraries/test_quantlib.cc
   )
 endif()
 if(WITH_SYCL)

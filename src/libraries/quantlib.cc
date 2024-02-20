@@ -80,5 +80,5 @@ LibQuantLib::FixedRateBond(Real faceValue, Real couponRate, Date issueDate, Date
 
   Date valuationDate = Settings::instance().evaluationDate();
 
-  return CashFlows::npv(cashFlows, *discountCurve, true);
+  return CashFlows::npv(cashFlows, *discountCurve, true, valuationDate);
 }
