@@ -18,7 +18,28 @@ add_executable(tests
   datastructures/test_linkedlist.cc
   datastructures/test_list.cc
   math/test_vectoralgebra.cc
+  math/test_matrixalgebra.cc
+  math/test_simulation.cc
 )
+if(WITH_QUANTLIB)
+  target_sources(tests
+    PRIVATE
+      libraries/test_quantlib.cc
+  )
+endif()
+if(WITH_SYCL)
+  target_compile_options(tests
+    PUBLIC
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
+  )
+  target_link_options(tests
+    PUBLIC
+      -fsycl
+      -fsycl-targets=nvptx64-nvidia-cuda
+  )
+endif()
+
 target_link_libraries(tests 
   PRIVATE 
     Catch2::Catch2WithMain 
@@ -29,4 +50,14 @@ target_link_libraries(tests
     control_lib 
     strings_lib
     math_lib
+    test_lib
 )
+if(WITH_QUANTLIB)
+  target_link_libraries(
+    tests
+    PRIVATE
+      ql_library
+    PUBLIC
+      lib_lib
+  )
+endif()

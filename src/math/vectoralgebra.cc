@@ -13,7 +13,7 @@
  * @return Vector of y values (output)
  */
 std::vector<double>
-MathVectorAlgebra::Cubic(int a, int b, int c, int d, std::vector<double> &x) {
+MathVectorAlgebra::Cubic(int a, int b, int c, int d, const std::vector<double> &x) {
   int n = x.size();
   std::vector<double> y = std::vector<double>(n);
   for (int i = 0; i < n; i += 1) {
@@ -33,7 +33,7 @@ MathVectorAlgebra::Cubic(int a, int b, int c, int d, std::vector<double> &x) {
  * @return Pointer to array of y values (output)
  */
 std::vector<double>
-MathVectorAlgebra::Convolve(int offset, std::vector<double> &h, std::vector<double> &x) {
+MathVectorAlgebra::Convolve(int offset, const std::vector<double> &h, const std::vector<double> &x) {
   int m = h.size();
   int n = x.size();
   int sum_h = 0;

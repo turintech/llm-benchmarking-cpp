@@ -61,3 +61,54 @@ GenVector::RandomSquareMatrix(int n, int m) {
 
   return ret;
 }
+
+/** @brief Generates a random square matrix of size n
+ *
+ *  @param n Size of the matrix to generate
+ *  @param l Lower bound (non-inclusive) of the values in the matrix
+ *  @param u Upper bound (non-inclusive) of the values in the matrix
+ *  @return A random square matrix of size n
+ */
+std::vector<std::vector<double>>
+GenVector::RandomSquareMatrixDouble(int n, int l, int u) {
+  std::vector<std::vector<double>> ret = std::vector<std::vector<double>>(n);
+
+  std::mt19937 gen(0);
+  std::uniform_real_distribution<double> dis(l, u);
+
+  srand(0);
+  for (int i = 0; i < n; i += 1) {
+    ret[i] = std::vector<double>(n);
+    for (int j = 0; j < n; j += 1) {
+      ret[i][j] = dis(gen);
+    }
+  }
+
+  return ret;
+}
+
+/** @brief Generates a random square matrix of size n
+ *
+ *  @param m Shape(0) of the matrix to generate
+ *  @param n Shape(1) of the matrix to generate
+ *  @param l Lower bound (non-inclusive) of the values in the matrix
+ *  @param u Upper bound (non-inclusive) of the values in the matrix
+ *  @return A random square matrix of size n
+ */
+std::vector<std::vector<double>>
+GenVector::RandomMatrixDouble(int m, int n, int l, int u) {
+  std::vector<std::vector<double>> ret = std::vector<std::vector<double>>(m);
+
+  std::mt19937 gen(0);
+  std::uniform_real_distribution<double> dis(l, u);
+
+  srand(0);
+  for (int i = 0; i < m; i += 1) {
+    ret[i] = std::vector<double>(n);
+    for (int j = 0; j < n; j += 1) {
+      ret[i][j] = dis(gen);
+    }
+  }
+
+  return ret;
+}

@@ -3,10 +3,15 @@
 
 #include <vector>
 
+// Convenience includes for artemis
+#if __has_include(<CL/sycl.hpp>)
+#include <CL/sycl.hpp>
+#endif   // __has_include
+
 namespace MathVectorAlgebra {
 
-std::vector<double> Cubic(int a, int b, int c, int d, std::vector<double> &x);
-std::vector<double> Convolve(int offset, std::vector<double> &h, std::vector<double> &x);
+std::vector<double> Cubic(int a, int b, int c, int d, const std::vector<double> &x);
+std::vector<double> Convolve(int offset, const std::vector<double> &h, const std::vector<double> &x);
 
 };   // namespace MathVectorAlgebra
 

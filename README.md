@@ -25,3 +25,5 @@ Run Benchmarking:
 ```shell
 ./build/tests/tests [benchmark]
 ```
+
+For more advanced settings, run cmake directly.

@@ -1,0 +1,62 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 15,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "oneapi",
+      "displayName": "Intel (icpx) + sycl",
+      "description": "Intel build pipeline (with GPU support)",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "icx",
+        "CMAKE_CXX_COMPILER": "icpx",
+        "CMAKE_CXX_FLAGS": "-O3",
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_SYCL": "ON"
+      }
+    },
+    {
+      "name": "intel",
+      "displayName": "Intel (icpx)",
+      "description": "Intel build pipeline",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "icx",
+        "CMAKE_CXX_COMPILER": "icpx",
+        "CMAKE_CXX_FLAGS": "-O3",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "gnu",
+      "displayName": "Gnu (G++)",
+      "description": "Gnu build pipeline",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "quantlib",
+      "displayName": "QuantLib (g++)",
+      "description": "Quantlib build pipeline",
+      "generator": "Ninja",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_QUANTLIB": "ON"
+      }
+    }
+  ]
+}

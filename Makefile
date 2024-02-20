@@ -1,3 +1,7 @@
+# Parallel Settings
+PARALLEL ?= 1
+PRESET ?= intel
+
 # Compiler Settings
 CXX = g++
 CXXFLAGS = -std=c++2a -O3 -Wall
@@ -7,12 +11,13 @@ SRC = src
 BUILD = build
 
 # Project Files
-SOURCES = $(wildcard $(SRC)/control/*.cc $(SRC)/strings/*.cc $(SRC)/algorithms/*.cc $(SRC)/datastructures/*.cc) $(SRC)/main.cc
+SOURCES = $(wildcard $(SRC)/control/*.cc $(SRC)/strings/*.cc $(SRC)/algorithms/*.cc $(SRC)/datastructures/*.cc $(SRC)/math/*.cc) $(SRC)/main.cc
 OBJECTS = $(SOURCES:$(SRC)/%.cc=$(BUILD)/%.o)
 EXECUTABLE = $(BUILD)/main
 
 # Default (CMake)
 all: 
+	cmake --preset $(PRESET)
 	cmake -S . -B $(BUILD)
 
 # No CMake
@@ -20,7 +25,8 @@ nocmake:
 	$(BUILD) $(EXECUTABLE)
 
 compile:
-	cmake --build $(BUILD)
+	cmake --preset $(PRESET)
+	cmake --build $(BUILD) -- -j$(PARALLEL)
 
 # Create Build
 $(BUILD):
