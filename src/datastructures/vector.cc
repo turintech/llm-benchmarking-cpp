@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "vector.h"
 
 void
@@ -10,7 +11,7 @@ OpsVector::PrintVector(std::vector<int> &v) {
 
 void
 OpsVector::PrintVector(std::vector<double> &v) {
-  for (int i = 0; i < (int) v.size(); i += 1) {
+  for (size_t i = 0; i < v.size(); i += 1) {
     std::cout << v[i] << " ";
   }
   std::cout << std::endl;
@@ -55,20 +56,9 @@ OpsVector::SearchVector(std::vector<int> &v, int n) {
  * @param v Vector to sort.
  * @return The sorted vector.
  */
-std::vector<int>
-OpsVector::SortVector(std::vector<int> &v) {
-  std::vector<int> ret(v);
-
-  for (int i = 0; i < (int) ret.size(); i += 1) {
-    for (int j = 0; j < (int) ret.size() - 1; j += 1) {
-      if (ret[j] > ret[j + 1]) {
-        int temp = ret[j];
-        ret[j] = ret[j + 1];
-        ret[j + 1] = temp;
-      }
-    }
-  }
-  return ret;
+std::vector<int> OpsVector::SortVector(std::vector<int> &v) {
+  std::sort(v.begin(), v.end());
+  return v;
 }
 
 /**
@@ -118,12 +108,9 @@ std::vector<int>
 OpsVector::MergeVectors(std::vector<int> &v1, std::vector<int> &v2) {
   std::vector<int> ret;
 
-  for (int i = 0; i < (int) v1.size(); i += 1) {
-    ret.push_back(v1[i]);
-  }
-  for (int i = 0; i < (int) v2.size(); i += 1) {
-    ret.push_back(v2[i]);
-  }
+  ret.reserve(v1.size() + v2.size());
+  ret.insert(ret.end(), v1.begin(), v1.end());
+  ret.insert(ret.end(), v2.begin(), v2.end());
 
   return ret;
 }
