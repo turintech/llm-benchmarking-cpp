@@ -30,10 +30,9 @@ SingleForLoop::SumRange(int n) {
  * which will make the unit tests fail, so we need a way
  * to make sure that doesn't happen
  */
-int
-SingleForLoop::MaxVector(std::vector<int> &arr) {
+int SingleForLoop::MaxVector(std::vector<int> &arr) {
   int max = 0;
-  for (int i = 0; i < (int) arr.size(); i += 1) {
+  for (int i = 0, size = (int) arr.size(); i < size; i += 1) {
     if (arr[i] > max) {
       max = arr[i];
     }
