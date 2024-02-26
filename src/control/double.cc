@@ -1,3 +1,4 @@
+#include <unordered_map>
 #include "double.h"
 
 /**
@@ -45,21 +46,18 @@ DoubleForLoop::SumTriangle(int n) {
  * @param v
  * @return the number of pairs in an vay
  */
-int
-DoubleForLoop::CountPairs(std::vector<int> v) {
+int DoubleForLoop::CountPairs(std::vector<int> v) {
+  std::unordered_map<int, int> numCount;
+  for (const auto& num : v) {
+    numCount[num]++;
+  }
   int count = 0;
-  for (int i = 0; i < (int) v.size(); i += 1) {
-    int nDuplicates = 0;
-    for (int j = 0; j < (int) v.size(); j += 1) {
-      if (v[i] == v[j]) {
-        nDuplicates += 1;
-      }
-    }
-    if (nDuplicates == 2) {
-      count += 1;
+  for (const auto& pair : numCount) {
+    if (pair.second == 2) {
+      count++;
     }
   }
-  return count / 2;
+  return count;
 }
 
 /**

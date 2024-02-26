@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "sort.h"
 
 #include <algorithm>
@@ -20,19 +21,15 @@ Sort::SortVector(std::vector<int> &v) {
  */
 void
 Sort::DutchFlagPartition(std::vector<int> &v, int pivot_value) {
-  int next_value = 0;
+  int smaller = 0, equal = 0, larger = v.size();
 
-  for (int i = 0; i < (int) v.size(); i += 1) {
-    if (v[i] < pivot_value) {
-      std::swap(v[i], v[next_value]);
-      next_value += 1;
-    }
-  }
-
-  for (int i = next_value; i < (int) v.size(); i += 1) {
-    if (v[i] == pivot_value) {
-      std::swap(v[i], v[next_value]);
-      next_value += 1;
+  while (equal < larger) {
+    if (v[equal] < pivot_value) {
+      std::swap(v[smaller++], v[equal++]);
+    } else if (v[equal] == pivot_value) {
+      ++equal;
+    } else {
+      std::swap(v[equal], v[--larger]);
     }
   }
 }
@@ -50,11 +47,9 @@ Sort::MaxN(std::vector<int> &v, int n) {
   // So that we don't modify the original vector
   std::vector<int> temp(v);
 
-  std::sort(temp.begin(), temp.end());
+  std::partial_sort(temp.begin(), temp.begin() + n, temp.end(), std::greater<int>());
 
-  for (int i = (int) temp.size() - 1; i >= (int) temp.size() - n; i -= 1) {
-    ret.push_back(temp[i]);
-  }
+  ret.assign(temp.begin(), temp.begin() + n);
 
   return ret;
 }

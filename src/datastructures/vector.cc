@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "vector.h"
 
 void
@@ -24,8 +25,8 @@ OpsVector::PrintVector(std::vector<double> &v) {
  */
 std::vector<int>
 OpsVector::ModifyVector(std::vector<int> &v) {
-  for (int i = 0; i < (int) v.size(); i += 1) {
-    v.at(i) += 1;
+  for (auto &elem : v) {
+    elem += 1;
   }
   return v;
 }
@@ -59,15 +60,8 @@ std::vector<int>
 OpsVector::SortVector(std::vector<int> &v) {
   std::vector<int> ret(v);
 
-  for (int i = 0; i < (int) ret.size(); i += 1) {
-    for (int j = 0; j < (int) ret.size() - 1; j += 1) {
-      if (ret[j] > ret[j + 1]) {
-        int temp = ret[j];
-        ret[j] = ret[j + 1];
-        ret[j + 1] = temp;
-      }
-    }
-  }
+  std::sort(ret.begin(), ret.end());
+
   return ret;
 }
 
@@ -79,11 +73,7 @@ OpsVector::SortVector(std::vector<int> &v) {
  */
 std::vector<int>
 OpsVector::ReverseVector(std::vector<int> &v) {
-  std::vector<int> ret;
-
-  for (int i = (int) v.size() - 1; i >= 0; i -= 1) {
-    ret.push_back(v[i]);
-  }
+  std::vector<int> ret(v.rbegin(), v.rend());
   return ret;
 }
 

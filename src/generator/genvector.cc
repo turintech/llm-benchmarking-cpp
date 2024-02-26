@@ -1,3 +1,4 @@
+#include <random>
 #include "genvector.h"
 #include <random>
 #include <vector>
@@ -10,11 +11,14 @@
  */
 std::vector<int>
 GenVector::RandomVector(int n, int m) {
-  std::vector<int> ret = std::vector<int>(n);
+  std::vector<int> ret(n);
 
-  srand(0);
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> dis(0, m-1);
+
   for (int i = 0; i < n; i += 1) {
-    ret[i] = rand() % m;
+    ret[i] = dis(gen);
   }
 
   return ret;
@@ -47,15 +51,14 @@ GenVector::RandomVectorDouble(int n, int l, int u) {
  *  @param m Upper bound (non-inclusive) of the values in the matrix
  *  @return A random square matrix of size n
  */
-std::vector<std::vector<int>>
-GenVector::RandomSquareMatrix(int n, int m) {
-  std::vector<std::vector<int>> ret = std::vector<std::vector<int>>(n);
+std::vector<std::vector<int>> GenVector::RandomSquareMatrix(int n, int m) {
+  std::vector<std::vector<int>> ret(n, std::vector<int>(n));
 
-  srand(0);
-  for (int i = 0; i < n; i += 1) {
-    ret[i] = std::vector<int>(n);
-    for (int j = 0; j < n; j += 1) {
-      ret[i][j] = rand() % m;
+  std::mt19937 gen(0);
+  std::uniform_int_distribution<> dis(0, m-1);
+  for (auto &row : ret) {
+    for (auto &elem : row) {
+      elem = dis(gen);
     }
   }
 
