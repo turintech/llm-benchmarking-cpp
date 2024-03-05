@@ -59,8 +59,7 @@ LinkedList::Print() {
  *
  *  @param n Data to add to the new node
  */
-void
-LinkedList::AddNode(int n) {
+void LinkedList::AddNode(int n) {
   Node *current = head;
   while (current->next != nullptr) {
     current = current->next;
