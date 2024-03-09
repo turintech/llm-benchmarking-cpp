@@ -1,6 +1,6 @@
 # Parallel Settings
 PARALLEL ?= 1
-PRESET ?= intel
+PRESET ?= gnu
 
 # Compiler Settings
 CXX = g++
